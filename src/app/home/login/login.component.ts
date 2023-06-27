@@ -21,13 +21,7 @@ export class LoginComponent implements OnInit {
   saveLogin(form:NgForm){
    const obj= this.repo.employeeLogin(this.login)
    setTimeout(() => {
-    // const current_user=localStorage.getItem('user')
     if(this.repo.currentUserRole=='admin'){
-      // const user=localStorage.getItem('user')
-      // if (user!=null){
-      //   console.log(user,"this is user we getting from back end and setting in the local storage")
-      //   console.log(typeof(user),"fghjklkjhghjkljhj")
-      // }
       this.router.navigateByUrl('/admin/home')
       return
     }
@@ -36,12 +30,6 @@ export class LoginComponent implements OnInit {
 
       this.router.navigateByUrl('/employee/employee/home')
 
-    }
-    else if (false) {
-      // // this.repo.loginStatus = true;
-      // this.repo.isloggedin()
-      // this.router.navigateByUrl("/weekend");
-    }
-  }, 700);
+    } }, 700);
 
 }}

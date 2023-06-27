@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EmployeeHomepageComponent } from './employee-homepage/employee-homepage.component';
 import { EmplooyeeComponent } from './emplooyee/emplooyee.component';
+import { CommonModule } from '@angular/common';
 
 
 let routing=RouterModule.forChild([
