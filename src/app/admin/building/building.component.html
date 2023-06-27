@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+              <form class="login-form" #form="ngForm" (ngSubmit)="saveLogin(form)"[noValidate]="true">
+                <h2>Add Your Building</h2>
+                    <div class="form-group">
+                        <label for="Building Name">Building Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Building Name" [(ngModel)]="building.building_name" [ngModelOptions]="{ standalone: true }">
+                      </div>
+                    <div class="form-group">
+                        <label for="location">location</label>
+                        <input type="text" class="form-control" id="location" placeholder="location"[(ngModel)]="building.location" [ngModelOptions]="{ standalone: true }">
+                    </div>
+                    <div class="form-group">
+                      <label for="status">status </label><br>
+                      Active <input type="radio" name="status" id="" value="active" [(ngModel)]="building.status">
+                        &nbsp;&nbsp; Inactive <input type="radio" name="status" id="" value="Inactive"  [(ngModel)]="building.status">
+                  </div>
+                  <div class="form-group">
+                    <label for="no_of_Floors">No of Floors</label>
+                    <input type="number" class="form-control" id="no_of_Floors" placeholder="no_of_Floors"[(ngModel)]="building.no_of_floors" [ngModelOptions]="{ standalone: true }">
+                </div>
+
+                    <button type="submit" class="btn btn-primary btn-block login-btn">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </div>
