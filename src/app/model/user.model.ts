@@ -5,6 +5,7 @@ export class User{
   mobile_number?:number;
   email_id?: string;
   password?:string;
+  cpassword?:string;
   location?:string;
 
 
