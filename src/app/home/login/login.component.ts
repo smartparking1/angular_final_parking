@@ -25,17 +25,17 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/admin/home')
       return
     }
-    else if ((this.repo.currentUserRole=='employee')) {
-      console.log(this.repo.currentUserRole)
 
+    else if ((this.repo.currentUserRole='employee')) {
+      console.log(this.repo.currentUserRole)
       alert("ok this is the employee")
 
       this.router.navigateByUrl('/employee/employee/home')
 
     }
   else{
-    // alert("this is the else part")
-    console.log('no   t logged in');
+    alert("this is the else part")
+    console.log('not logged in');
   } }, 700);
 
 }}
