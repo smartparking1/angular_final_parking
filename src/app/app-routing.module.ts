@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { EmplooyeeComponent } from './employee/emplooyee/emplooyee.component';
+import { EmployeeHomepageComponent } from './employee/employee-homepage/employee-homepage.component';
 
 const routes: Routes = [
   {
@@ -40,4 +42,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const ComponentArry=[AppComponent,LoginComponent,HomeComponent,RegisterComponent,AdminHomeComponent]
+export const ComponentArry=[AppComponent,LoginComponent,HomeComponent,RegisterComponent,AdminHomeComponent,EmployeeHomepageComponent]

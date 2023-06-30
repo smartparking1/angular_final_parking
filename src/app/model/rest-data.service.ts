@@ -23,4 +23,8 @@ export class RestDataService {
   addBuilding(building:Building):Observable<Building>{
     return this.http.post<Building>("http://127.0.0.1:8000/building/addingbuilding/",building)
   }
+
+  getListOfBuildings():Observable<Building[]>{
+    return this.http.get<Building[]>("http://127.0.0.1:8000/building/GettingAllBuildings/")
+  }
 }

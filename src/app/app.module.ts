@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import { CommonModule } from '@angular/common';
+import { FloorComponent } from './admin/floor/floor.component';
 
 
 

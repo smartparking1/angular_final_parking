@@ -1,0 +1,20 @@
+.Home-page
+{
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+}
+.Content{
+  display: flex;
+  align-items: center;
+  justify-content: center;color:black;
+  width: 80%;
+  /* border: 2px solid black; */
+  /* width: 70%; */
+
+}
+.letter{
+  color: #ff4b00 ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size:100px;
+}
