@@ -16,12 +16,12 @@ import { BuildingComponent } from '../building/building.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FloorComponent } from '../floor/floor.component';
 import { CommonModule } from '@angular/common';
-
+import { BrowserModule } from '@angular/platform-browser';
+import {MatListModule} from '@angular/material/list';
 
 let routing=RouterModule.forChild([
   {
@@ -33,6 +33,9 @@ let routing=RouterModule.forChild([
       },
       {
         path:'addbuilding',component:BuildingComponent
+      },
+      {
+        path:'floor',component:FloorComponent
       },
       {
         path:'**', redirectTo:"home"
@@ -53,14 +56,14 @@ let routing=RouterModule.forChild([
       MatIconModule,
       MatToolbarModule,
       MatSidenavModule,
-      // BrowserAnimationsModule,
       MatSelectModule,
       MatButtonModule,
-      // NoopAnimationsModule,
+      CommonModule,
+      MatListModule
 
       ],
 
-  declarations: [AdminComponent],
+  declarations: [AdminComponent, FloorComponent],
 
 })
 export class AdminModule { }
