@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/admin/home')
       return
     }
+
     else if ((this.repo.currentUserRole='employee')) {
       console.log(this.repo.currentUserRole)
       alert("ok this is the employee")
