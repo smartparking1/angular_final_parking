@@ -8,16 +8,21 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 import { User } from './user.model';
 import { Building } from './building.model';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class RepositryService {
 
   public isLogin:boolean=false;
   public currentUser:User=new User()
   public currentUserRole:string=""
+  public isRegister:boolean=false;
 
-  constructor(private restdata:RestDataService,private router:Router) { }
+  constructor( private restdata: RestDataService,private router:Router) { }
 
 
   employeeLogin(user:Login){
@@ -45,6 +50,60 @@ export class RepositryService {
       }
     )
   }
+
+userRegister(user:User){
+  this.restdata.UserRegister(user).subscribe(
+    (res)=>{
+      this.isRegister=true
+      this.isRegister=res
+    },
+    (error)=>{
+      console.log(error);
+      alert(error.error.detail)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.error.detail,
+        footer: 'failed registering'
+      })
+    }
+
+  )
+
+}
+
+
+  // userRegister(user: User) {
+  //   this.restdata.UserRegister(user).subscribe(
+  //     (res) => {
+  //       this.isRegister=true
+  //       console.log("Registration successful");
+  //       console.log(this.userRegister)
+  //       console.log(res.contact);
+
+  //     },
+
+  //     (error) => {
+  //       console.log(error);
+  //       alert('Failed to register user');
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Registration Failed',
+  //         text: 'Failed to register user',
+  //         footer: 'Please try again'
+  //       });
+  //     }
+  //   );
+  //  }
+
+
+  // userRegister(user: User, registrationUrl: string): Observable<any> {
+  //   return this.restdata.UserRegister(user, registrationUrl);
+  // }
+
+
+
+
 
 
   //* for adding building

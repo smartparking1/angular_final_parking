@@ -8,14 +8,8 @@ export class Login{
   ){}
 }
 
-export class User{
-  id?:number;
-  name?:string;
-  email?:string;
-  contact?:number;
-  password?: string;
-  cpassword?:string;
-  role?:string;
-
+export class Logins{
+  email_id2?:string
+  password2?:string
 
 }
