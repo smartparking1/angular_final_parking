@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 
+import { FloorComponent } from './admin/floor/floor.component';
 
 
 
@@ -55,7 +56,7 @@ import Swal from 'sweetalert2';
     ReactiveFormsModule,
    BrowserAnimationsModule,
    MatIconModule,
-   
+
 
 
 

@@ -1,7 +1,7 @@
-<header>
+<header *ngIf="!chekingAdminLoginStatus()">
   <nav style="background-color: #1f2026;" class="navbar navbar-expand-lg navbar-dark ">
-    <div class="logo">
-        logo
+    <div class="">
+      <img src="../assets/parking-sign.png" alt="" height="50px" width="50px"><h5 class="name-of-comp"> <span class="letter">S</span>mart  <span class="letter">P</span>arking  <span class="letter">S</span>ystem</h5>
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
@@ -12,7 +12,7 @@
           <a  style="color: white;  " class="nav-link" href="#">Content</a>
         </li>
         <li class="nav-item">
-          <a  style="color: white;" class="nav-link"  routerLink="/login">Login</a>
+          <a  style="color: white;" class="nav-link"  routerLink="/login" *ngIf="!chekingAdminLoginStatus()">Login</a>
         </li>
       </ul>
     </div>
