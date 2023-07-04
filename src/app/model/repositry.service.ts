@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Login } from './Register.model';
 import { RestDataService } from './rest-data.service';
 import { catchError } from 'rxjs/operators';
@@ -23,6 +23,7 @@ export class RepositryService {
 
 
   employeeLogin(user:Login){
+    console.warn("//pppppppppppppppppppppppppppppppp")
 
     this.restdata.employeeLogin(user).subscribe(
       (res)=>{
@@ -69,6 +70,7 @@ export class RepositryService {
           showConfirmButton: false,
           timer: 1500
         })
+        EventEmitter
         this.router.navigateByUrl('/admin/admin/home')
       },
       (error)=>{
@@ -100,7 +102,19 @@ export class RepositryService {
 
   }
   chekingAdminLoginStatus(){
-    return this.adminLoginStatus
+    this.adminLoginStatus
+    // console.log(this.isLogin,"==================")
+    const rolecheking=localStorage.getItem('user')
+    if(rolecheking!=null){
+    const role=JSON.parse(rolecheking).role
+    if(role=='admin'){
+      return true
+    }
+    else{
+      return false
+    }
+    }
+    return false
   }
 
 }

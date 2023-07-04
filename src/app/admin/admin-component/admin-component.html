@@ -2,11 +2,12 @@
 
 <mat-toolbar class="header">
   <mat-icon (click)="toggleSideNav()">menu</mat-icon>
-  <!-- <span class="menu-text" style="padding: 10px;">Dashboard</span>/ -->
-   <span><img src="" alt=""></span>
+  <span class="menu-text"></span>
   <span class="menu-text" >
-    <mat-icon class="material-icons"  routerLink="/home">home</mat-icon>
-    <mat-icon class="material-icons" >logout </mat-icon>
+
+    <h3> Smart Parking System</h3>
+    <!-- <p> Logout</p> -->
+
   </span>
 </mat-toolbar>
 
@@ -18,7 +19,7 @@
       <a mat-list-item  routerLink="/admin/admin/addbuilding" ><span class="fas fa-city" style="color: red;"></span>&nbsp; Add Building</a>
       <a mat-list-item  routerLink="/admin/admin/floor" style="color: white;"> &nbsp; Total Units</a>
       <a mat-list-item  routerLink="/"style="color: white;"><span class="fas fa-list" style="color: red;"></span> &nbsp; Requests</a>
-      <a mat-list-item  routerLink="/"style="color: white;"><span class="fas fa-users" style="color: red;"></span>&nbsp; Users</a>
+      <a mat-list-item  routerLink="/userdetails"style="color: white;"><span class="fas fa-users" style="color: red;"></span>&nbsp; Profile</a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -28,5 +29,6 @@
 
 
 </mat-sidenav-container>
+
 
 

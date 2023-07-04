@@ -43,20 +43,6 @@ emailError: boolean = false;
 
         console.log("valid form ")
 
-        // this.http.post('http://localhost/register', this.newUser)
-        // .subscribe(
-        //   (response) => {
-        //     console.log('Registration successful!', response);
-        //     this.router.navigateByUrl('/login');
-
-
-        //   },
-        //   (error) => {
-        //     console.error('Registration failed!', error);
-        //   }
-        // );
-
-
       }
       else{
         console.log("invalid form");

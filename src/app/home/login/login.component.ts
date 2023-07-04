@@ -11,31 +11,33 @@ import { RepositryService } from 'src/app/model/repositry.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private repo:RepositryService,private router:Router) { }
+  constructor(private repo: RepositryService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  login:Login=new Login("","")
+  login: Login = new Login("", "")
 
 
-  saveLogin(form:NgForm){
-   const obj= this.repo.employeeLogin(this.login)
-   setTimeout(() => {
-    if(this.repo.currentUserRole=='admin'){
-      this.router.navigateByUrl('/admin/home')
-      return
-    }
+  saveLogin(form: NgForm) {
+    const obj = this.repo.employeeLogin(this.login)
+    setTimeout(() => {
+      if (this.repo.currentUserRole == 'admin') {
+        this.router.navigateByUrl('admin/admin/home')
+        return
+      }
 
-    else if ((this.repo.currentUserRole=='employee')) {
-      console.log(this.repo.currentUserRole)
-      alert("ok this is the employee")
+      else if ((this.repo.currentUserRole == 'employee')) {
+        console.log(this.repo.currentUserRole)
+        alert("ok this is the employee")
 
-      this.router.navigateByUrl('/employee/employee/home')
+        this.router.navigateByUrl('/employee/employee/home')
 
-    }
-  else{
-    alert("this is the else part")
-    console.log('not logged in');
-  } }, 700);
+      }
+      else {
+        alert("this is the else part")
+        console.log('not logged in');
+      }
+    }, 700);
 
-}}
+  }
+}

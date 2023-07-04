@@ -16,6 +16,15 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     }
    chekingAdminLoginStatus(){
+    // console.log('this is the method of cheklking the employee logind or not')
     return this.repo.chekingAdminLoginStatus()
+  }
+  loginStatus(){
+    if (localStorage.getItem('user')){
+      return true
+    }
+   else{
+    return false
+   }
   }
 }

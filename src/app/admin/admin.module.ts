@@ -5,10 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { RouterModule } from '@angular/router';
-import { AdminHomeComponent } from './admin-home.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
-import { AdminComponent } from '../admin-component/admin-component.component';
-import { BuildingComponent } from '../building/building.component';
+import { AdminComponent } from './admin-component/admin-component.component';
+import { BuildingComponent } from './building/building.component';
 
 
 //* for angular metirial imports
@@ -18,7 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
-import { FloorComponent } from '../floor/floor.component';
+import { FloorComponent } from './floor/floor.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatListModule} from '@angular/material/list';
@@ -36,6 +36,9 @@ let routing=RouterModule.forChild([
       },
       {
         path:'floor',component:FloorComponent
+      },
+      {
+
       },
       {
         path:'**', redirectTo:"home"
