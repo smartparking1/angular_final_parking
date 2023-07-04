@@ -6,5 +6,6 @@ export class Floor
   public no_of_slots?:number
   public status?:string
   public building?:Building
+  public location?:string
 
 }

@@ -23,6 +23,9 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { FloorComponent } from './admin/floor/floor.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -52,8 +55,12 @@ import { FloorComponent } from './admin/floor/floor.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-   BrowserAnimationsModule
-
+   BrowserAnimationsModule,
+   MatFormFieldModule,
+   MatSelectModule,
+   MatBottomSheetModule,
+   CommonModule,
+   MatInputModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

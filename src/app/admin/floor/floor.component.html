@@ -1,8 +1,49 @@
-<p>floor works!</p>
+<form #form="ngForm" (ngSubmit)="addFloor(form)">
+<div class="card">
+  <div class="card-body">
+    <div class="form">
 
-<div *ngFor="let building of listOfbuilding()" class="container">
-  <h1>{{building.building_name}}</h1>
-  <h1>{{building.location}}</h1>
-  <h1>{{building.status}}</h1>
-  <h1>{{building.no_of_floors}}</h1>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Building names</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let name of buildings" [value]="name">
+            {{name.building_name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <label>selecet a building</label>
+            <select class="form-control" id="selectedBuilding"  [(ngModel)]="selectedbuilding" name="building" (ngModelChange)="onbuildingselction()" placeholder="Select a building">
+              <option *ngFor="let name of uniqueBuildings" [value]=" name ">{{ name }}</option>
+            </select>
+
+            <select class="form-control" id="selectedBuilding"  [(ngModel)]="selectedlocation" name="location"  (ngModelChange)="onbuildingselction()" placeholder="location of the building">
+              <option *ngFor="let name of filterBuildings" [value]=" name.location ">{{name.location}}</option>
+            </select>
+
+      <div>
+        <label>Selecet floor</label>
+        <input type="text" (click)="showBox2()" [(ngModel)]="selectednumber" placeholder="Click to select" class="form-control" name="floor_no">
+        <div *ngIf="showBox" class="number-box">
+          <!-- <div *ngFor="let number of buildings"> -->
+              <span *ngFor="let num of numbers let i = index;">
+                <button class="number-item" (click)="selectnumber(i+1)">{{ i+1 }}-{{selectedbuilding}}</button>
+
+              </span>
+          <!-- </div> -->
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2"><b>Enter no of slots in the floor</b></label>
+          <input type="n" class="form-control" id="formGroupExampleInput2"
+            placeholder="Enter the Building location" [(ngModel)]="floor.no_of_slots" name="no_of_slots">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2"><b>Enter the Building status</b></label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter the Building status"
+            [(ngModel)]="floor.status" name="status">
+        </div>
+        <button class="addButton">Add Floor</button>
+      </div>
+    </div>
+  </div>
 </div>
+</form>
