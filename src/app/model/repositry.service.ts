@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Login } from './Register.model';
 import { RestDataService } from './rest-data.service';
 import { catchError } from 'rxjs/operators';
@@ -8,10 +8,13 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 import { User } from './user.model';
 import { Building } from './building.model';
+import { Floor } from './floor.model';
+import { Form } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
-export class RepositryService {
+export class RepositryService implements OnInit {
+
 
   public isLogin:boolean=false;
   public currentUser:User=new User()
@@ -19,7 +22,20 @@ export class RepositryService {
   public ListofBuildings:Building[]=[]
   public adminLoginStatus:boolean=false
 
-  constructor(private restdata:RestDataService,private router:Router) { }
+  constructor(private restdata:RestDataService,private router:Router) {
+
+   }
+
+  ngOnInit(): void {
+
+
+  }
+
+
+  addfloor(floor: Floor) {
+
+    this.restdata.addfloor(floor);
+}
 
 
   employeeLogin(user:Login){
@@ -34,10 +50,12 @@ export class RepositryService {
         this.currentUser=res.user
         if(this.currentUser.role=='admin'){
           this.adminLoginStatus=true
+
         }
         else{
           this.adminLoginStatus=false
         }
+        console.log(res.user)
 
         this.currentUserRole=res.user.role
         localStorage.setItem('user',JSON.stringify(res.user))
@@ -83,24 +101,16 @@ export class RepositryService {
   }
 
   getListOfBuildings(){
-    this.restdata.getListOfBuildings().subscribe(
-      (res)=>{
-      this.ListofBuildings=res
-      },
-      (error)=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: error.error.detail,
-          footer: 'please enter correct details'
-        })
-      }
-    )
+    this.restdata.getListOfBuildings().subscribe((data)=>{
+      console.warn("hello")
+      this.ListofBuildings=data
+      });
+    console.warn(this.ListofBuildings+"inrfepo")
     return this.ListofBuildings
-
   }
   chekingAdminLoginStatus(){
     return this.adminLoginStatus
   }
+
 
 }

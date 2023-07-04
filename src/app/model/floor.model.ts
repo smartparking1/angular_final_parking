@@ -7,4 +7,5 @@ export class Floor
   public status?:string
   public building?:Building
 
+
 }
