@@ -3,11 +3,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-<<<<<<< Updated upstream
-              <form class="login-form" #form="ngForm" (ngSubmit)="saveLogin(form)"[noValidate]="true" enctype="multipart/form-data">
-=======
+
               <form class="login-form" (ngSubmit)="saveLogin()" [formGroup]="form">
->>>>>>> Stashed changes
+
                 <h2>Add Your Building</h2>
 
                 <div class="form-group">
@@ -38,7 +36,7 @@
 
 
                 <div class="radio-buttons">
-                  
+
                   <label >Select Status</label><br>
                   <input type="radio" id="active" name="status" value="active" [(ngModel)]="building.status" formControlName="status">
                 <label for="active">Active</label>

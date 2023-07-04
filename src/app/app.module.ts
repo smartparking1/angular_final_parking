@@ -20,7 +20,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
-<<<<<<< Updated upstream
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 
@@ -28,16 +27,6 @@ import { FloorComponent } from './admin/floor/floor.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatInputModule} from '@angular/material/input';
-=======
-
-
-
-
->>>>>>> Stashed changes
-
-
-
-
 
 
 @NgModule({
@@ -48,11 +37,7 @@ import {MatInputModule} from '@angular/material/input';
     EntryPointComponent,
     ExitpointComponent,
     FinepageComponent,
-<<<<<<< Updated upstream
     BuildingComponent,
-=======
->>>>>>> Stashed changes
-
 
   ],
   imports: [
@@ -62,30 +47,22 @@ import {MatInputModule} from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
    BrowserAnimationsModule,
-<<<<<<< Updated upstream
    MatFormFieldModule,
    MatSelectModule,
    MatBottomSheetModule,
    CommonModule,
    MatInputModule,
      MatIconModule,
-=======
    MatToolbarModule,
    MatIconModule,
-<<<<<<< Updated upstream
+
    MatSidenavModule,
    MatSelectModule,
    MatButtonModule,
    MatCardModule,
-=======
+
    FormsModule,
 
-
->>>>>>> Stashed changes
-
-
-
->>>>>>> Stashed changes
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

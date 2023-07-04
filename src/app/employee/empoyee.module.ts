@@ -9,12 +9,9 @@ import { EmployeeHomepageComponent } from './employee-homepage/employee-homepage
 import { EmplooyeeComponent } from './emplooyee/emplooyee.component';
 import { CommonModule } from '@angular/common';
 import { ExitpointComponent } from './exitpoint/exitpoint.component';
-<<<<<<< Updated upstream
 import { FineComponent } from './fine/fine.component';
-=======
 import { ChoosebuildingComponent } from './choosebuilding/choosebuilding.component';
 import { MatCardModule } from '@angular/material/card';
->>>>>>> Stashed changes
 
 
 let routing=RouterModule.forChild([
@@ -33,11 +30,7 @@ let routing=RouterModule.forChild([
         path:'exitpoint', component:ExitpointComponent
       },
       {
-<<<<<<< Updated upstream
-        path:'finepoint',component:FineComponent
-=======
         path:'choosebuilding', component:ChoosebuildingComponent
->>>>>>> Stashed changes
       },
       {
         path:'**', redirectTo:"home"
@@ -56,11 +49,7 @@ let routing=RouterModule.forChild([
 
     declarations: [
         EmplooyeeComponent,
-<<<<<<< Updated upstream
-        FineComponent
-=======
         ChoosebuildingComponent
->>>>>>> Stashed changes
 
     ],
 

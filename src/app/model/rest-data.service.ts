@@ -4,17 +4,13 @@ import { Login } from './Register.model';
 // import 'rxjs/add/oparator/catch';
 import { Observable, throwError } from 'rxjs';
 import { Building } from './building.model';
-<<<<<<< Updated upstream
 import { NgForm } from '@angular/forms';
 import { Floor } from './floor.model';
 import { vehicle } from './vehilcle.model';
 import { User } from './user.model';
 
 
-=======
-import { Floor } from './floor.model';
 import { Form } from '@angular/forms';
->>>>>>> Stashed changes
 @Injectable({
   providedIn: 'root'
 })

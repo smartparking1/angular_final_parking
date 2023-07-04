@@ -1,38 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Login, User } from 'src/app/model/Register.model';
+import { Login} from 'src/app/model/Register.model';
 import { Building } from 'src/app/model/building.model';
 import { RepositryService } from 'src/app/model/repositry.service';
-<<<<<<< Updated upstream
 import { FormControl,Validators } from '@angular/forms';
+import { User } from 'src/app/model/user.model';
 
-=======
 import { RestDataService } from 'src/app/model/rest-data.service';
 import Swal from 'sweetalert2'
->>>>>>> Stashed changes
+import { get } from 'http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-<<<<<<< Updated upstream
 form!:FormGroup
 submitted = false;
 
 
-  constructor(private repo:RepositryService,private router:Router, private formBuilder:FormBuilder) {
+  constructor(private repo:RepositryService,private router:Router, private formBuilder:FormBuilder, private restdata: RestDataService) {
 
   }
-=======
   public isLogin:boolean=false;
   public currentUser:User=new User()
   public currentUserRole:string=""
   public ListofBuildings:Building[]=[]
   public adminLoginStatus:boolean=false
-  constructor(private repo:RepositryService,private router:Router,private restdata:RestDataService) { }
->>>>>>> Stashed changes
+
+
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -45,18 +42,7 @@ submitted = false;
   login:Login=new Login("","")
 
 
-<<<<<<< Updated upstream
   saveLogin(){
-   const obj= this.repo.employeeLogin(this.login)
-
-   if (this.form.invalid) {
-    return;
-    }
-=======
-  saveLogin(form:NgForm){
-  //
-
-
 
     this.restdata.employeeLogin(this.login).subscribe(
       (res)=>{
@@ -81,7 +67,7 @@ submitted = false;
         // alert(error.error.detail)
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
+          title: 'Invalid Crendentials',
           text: error.error.detail,
           footer: 'please enter correct details'
         })
@@ -89,17 +75,9 @@ submitted = false;
     )
 
 
->>>>>>> Stashed changes
    setTimeout(() => {
-<<<<<<< Updated upstream
-    const loginrole=localStorage.getItem('user')
-    console.log(loginrole)
-    console.log("++++++++++++")
-    console.log(this.repo.currentUserRole)
-=======
    const loginrole=localStorage.getItem('user')
     console.log(loginrole)
->>>>>>> Stashed changes
     if(loginrole!=null){
       var role=JSON.parse(loginrole)
       console.log(role.role,"okkkkkkkkkkkkkkkkkk")
@@ -112,17 +90,6 @@ submitted = false;
 
       return
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-      else if ((this.repo.currentUserRole == 'employee')) {
-        console.log(this.repo.currentUserRole)
-        alert("ok this is the employee")
-
-        this.router.navigateByUrl('/employee/employee/home')
-=======
-=======
->>>>>>> Stashed changes
     else if ((this.repo.currentUserRole=='employee')) {
       console.log(this.repo.currentUserRole,"............................")
       alert("ok this is the employee")
@@ -135,15 +102,9 @@ submitted = false;
     console.log('not logged in');
     console.log(this.repo.currentUserRole)
   } }, 700);
->>>>>>> Stashed changes
+  }
+  get f()
+  { return this.form.controls; }
 
-      }
-      else {
-        alert("this is the else part")
-        console.log('not logged in');
-      }
-    }, 7000}
-get f()
-{ return this.form.controls; }
 
 }

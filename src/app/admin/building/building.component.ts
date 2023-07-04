@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Building } from 'src/app/model/building.model';
 import { RepositryService } from 'src/app/model/repositry.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-building',
@@ -10,19 +11,14 @@ import { RepositryService } from 'src/app/model/repositry.service';
   styleUrls: ['./building.component.css']
 })
 export class BuildingComponent implements OnInit {
-<<<<<<< Updated upstream
 public building:Building=new Building()
-  constructor(private http:HttpClient) { }
   selectedFile: File | undefined;
-=======
   submitted = false;
   form!: FormGroup;
-   building: Building = new Building();
    statusError:boolean=false;
    selectedstatus?:string
-  constructor(private repo: RepositryService, private formBuilder: FormBuilder) { }
+  constructor(private repo: RepositryService, private formBuilder: FormBuilder,private http:HttpClient) { }
 
->>>>>>> Stashed changes
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       buildingName: ['', Validators.required],
@@ -31,8 +27,25 @@ public building:Building=new Building()
       noOfFloors: ['', Validators.required]
     });
   }
-<<<<<<< Updated upstream
-  saveLogin(form: NgForm) {
+  saveLogin() {
+    this.submitted=true;
+    console.log(this.building);
+    console.log("inside save method")
+
+    if (this.isValidForm()){
+   if(this.selectedstatus){
+    this.statusError=false
+   }
+      console.log(" formmm")
+      this.repo.addBuilding(this.building);
+      console.log("valid form")
+    }
+    else{
+      console.log("invalid form");
+        // if (!this.selectedstatus) {
+          this.statusError = true;
+        // }
+    }
     console.log(this.building.building_name);
     const formData = new FormData();
     console.log(this.building.status);
@@ -61,27 +74,26 @@ public building:Building=new Building()
       onFileSelected(event: any) {
         this.selectedFile = event.target.files[0];
       }
-=======
-  saveLogin() {
-    this.submitted=true;
-    console.log(this.building);
-    console.log("inside save method")
+  // saveLogin() {
+  //   this.submitted=true;
+  //   console.log(this.building);
+  //   console.log("inside save method")
 
-    if (this.isValidForm()){
-   if(this.selectedstatus){
-    this.statusError=false
-   }
-      console.log(" formmm")
-      this.repo.addBuilding(this.building);
-      console.log("valid form")
-    }
-    else{
-      console.log("invalid form");
-        // if (!this.selectedstatus) {
-          this.statusError = true;
-        // }
-    }
-  }
+  //   if (this.isValidForm()){
+  //  if(this.selectedstatus){
+  //   this.statusError=false
+  //  }
+  //     console.log(" formmm")
+  //     this.repo.addBuilding(this.building);
+  //     console.log("valid form")
+  //   }
+  //   else{
+  //     console.log("invalid form");
+  //       // if (!this.selectedstatus) {
+  //         this.statusError = true;
+  //       // }
+  //   }
+  // }
 
   isValidForm() {
    return (this.building.building_name &&
@@ -89,5 +101,4 @@ public building:Building=new Building()
       this.building.no_of_floors &&
       this.building.status);
   }
->>>>>>> Stashed changes
 }
