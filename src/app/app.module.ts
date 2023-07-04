@@ -13,17 +13,16 @@ import { FinepageComponent } from './employee/finepage/finepage.component';
 import { BuildingComponent } from './admin/building/building.component';
 import { TokenInterceptor } from './service/admin-inter.interceptor';
 
-import {MatCardModule} from '@angular/material/card'
+
+
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
-
-
-
-
+import { CommonModule } from '@angular/common';
+import { FloorComponent } from './admin/floor/floor.component';
 
 
 
@@ -46,8 +45,6 @@ import {MatSelectModule} from '@angular/material/select';
     ExitpointComponent,
     FinepageComponent,
     BuildingComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -55,22 +52,13 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-   BrowserAnimationsModule,
-   MatToolbarModule,
-   MatIconModule,
-   MatSidenavModule,
-   MatSelectModule,
-   MatButtonModule,
-   MatCardModule,
-
-
+   BrowserAnimationsModule
 
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-    multi: true,
-
+    multi: true
   }],
   bootstrap: [AppComponent]
 })
