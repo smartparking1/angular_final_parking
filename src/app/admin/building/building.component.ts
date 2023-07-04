@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Building } from 'src/app/model/building.model';
 import { RepositryService } from 'src/app/model/repositry.service';
 
@@ -10,11 +10,28 @@ import { RepositryService } from 'src/app/model/repositry.service';
   styleUrls: ['./building.component.css']
 })
 export class BuildingComponent implements OnInit {
+<<<<<<< Updated upstream
 public building:Building=new Building()
   constructor(private http:HttpClient) { }
   selectedFile: File | undefined;
+=======
+  submitted = false;
+  form!: FormGroup;
+   building: Building = new Building();
+   statusError:boolean=false;
+   selectedstatus?:string
+  constructor(private repo: RepositryService, private formBuilder: FormBuilder) { }
+
+>>>>>>> Stashed changes
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      buildingName: ['', Validators.required],
+      location: ['', Validators.required],
+      status: ['', Validators.required], // Include Validators.required
+      noOfFloors: ['', Validators.required]
+    });
   }
+<<<<<<< Updated upstream
   saveLogin(form: NgForm) {
     console.log(this.building.building_name);
     const formData = new FormData();
@@ -44,4 +61,33 @@ public building:Building=new Building()
       onFileSelected(event: any) {
         this.selectedFile = event.target.files[0];
       }
+=======
+  saveLogin() {
+    this.submitted=true;
+    console.log(this.building);
+    console.log("inside save method")
+
+    if (this.isValidForm()){
+   if(this.selectedstatus){
+    this.statusError=false
+   }
+      console.log(" formmm")
+      this.repo.addBuilding(this.building);
+      console.log("valid form")
+    }
+    else{
+      console.log("invalid form");
+        // if (!this.selectedstatus) {
+          this.statusError = true;
+        // }
+    }
+  }
+
+  isValidForm() {
+   return (this.building.building_name &&
+      this.building.location &&
+      this.building.no_of_floors &&
+      this.building.status);
+  }
+>>>>>>> Stashed changes
 }

@@ -1,7 +1,7 @@
 // import { AgGridModule } from 'ag-grid-angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule, ComponentArry } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -40,13 +40,6 @@ import {MatInputModule} from '@angular/material/input';
 
 
 
-
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +48,10 @@ import {MatInputModule} from '@angular/material/input';
     EntryPointComponent,
     ExitpointComponent,
     FinepageComponent,
+<<<<<<< Updated upstream
     BuildingComponent,
+=======
+>>>>>>> Stashed changes
 
 
   ],
@@ -76,10 +72,16 @@ import {MatInputModule} from '@angular/material/input';
 =======
    MatToolbarModule,
    MatIconModule,
+<<<<<<< Updated upstream
    MatSidenavModule,
    MatSelectModule,
    MatButtonModule,
    MatCardModule,
+=======
+   FormsModule,
+
+
+>>>>>>> Stashed changes
 
 
 

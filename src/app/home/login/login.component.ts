@@ -91,10 +91,15 @@ submitted = false;
 
 >>>>>>> Stashed changes
    setTimeout(() => {
+<<<<<<< Updated upstream
     const loginrole=localStorage.getItem('user')
     console.log(loginrole)
     console.log("++++++++++++")
     console.log(this.repo.currentUserRole)
+=======
+   const loginrole=localStorage.getItem('user')
+    console.log(loginrole)
+>>>>>>> Stashed changes
     if(loginrole!=null){
       var role=JSON.parse(loginrole)
       console.log(role.role,"okkkkkkkkkkkkkkkkkk")
@@ -108,6 +113,7 @@ submitted = false;
       return
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
       else if ((this.repo.currentUserRole == 'employee')) {
         console.log(this.repo.currentUserRole)
@@ -115,6 +121,8 @@ submitted = false;
 
         this.router.navigateByUrl('/employee/employee/home')
 =======
+=======
+>>>>>>> Stashed changes
     else if ((this.repo.currentUserRole=='employee')) {
       console.log(this.repo.currentUserRole,"............................")
       alert("ok this is the employee")

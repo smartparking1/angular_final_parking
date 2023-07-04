@@ -10,10 +10,14 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { EmplooyeeComponent } from './employee/emplooyee/emplooyee.component';
 import { EmployeeHomepageComponent } from './employee/employee-homepage/employee-homepage.component';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import { UserdetailsComponent } from './home/userdetails/userdetails.component';
 =======
 import { ChoosebuildingComponent } from './employee/choosebuilding/choosebuilding.component';
 
+>>>>>>> Stashed changes
+=======
+import { BuildingComponent } from './admin/building/building.component';
 >>>>>>> Stashed changes
 
 const routes: Routes = [
@@ -57,4 +61,8 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+<<<<<<< Updated upstream
 export const ComponentArry=[AppComponent,LoginComponent,HomeComponent,RegisterComponent,AdminHomeComponent,EmployeeHomepageComponent,UserdetailsComponent]
+=======
+export const ComponentArry=[AppComponent,LoginComponent,HomeComponent,RegisterComponent,AdminHomeComponent,EmployeeHomepageComponent, BuildingComponent]
+>>>>>>> Stashed changes

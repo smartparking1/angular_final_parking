@@ -108,7 +108,7 @@ userRegister(user:User){
       alert(error.error.detail)
       Swal.fire({
         icon: 'error',
-        title: 'Oops...',
+        title: 'Registering Failed...',
         text: error.error.detail,
         footer: 'failed registering'
       })
@@ -119,38 +119,6 @@ userRegister(user:User){
 }
 
 
-  // userRegister(user: User) {
-  //   this.restdata.UserRegister(user).subscribe(
-  //     (res) => {
-  //       this.isRegister=true
-  //       console.log("Registration successful");
-  //       console.log(this.userRegister)
-  //       console.log(res.contact);
-
-  //     },
-
-  //     (error) => {
-  //       console.log(error);
-  //       alert('Failed to register user');
-  //       Swal.fire({
-  //         icon: 'error',
-  //         title: 'Registration Failed',
-  //         text: 'Failed to register user',
-  //         footer: 'Please try again'
-  //       });
-  //     }
-  //   );
-  //  }
-
-
-  // userRegister(user: User, registrationUrl: string): Observable<any> {
-  //   return this.restdata.UserRegister(user, registrationUrl);
-  // }
-
-
-
-
-
 
   //* for adding building
 
@@ -158,10 +126,11 @@ userRegister(user:User){
 
     this.restdata.addBuilding(buildng).subscribe(
       (res)=>{
+        console.log(res)
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Your work has been saved',
+          title: 'Building Added Successfully.',
           showConfirmButton: false,
           timer: 1500
         })
