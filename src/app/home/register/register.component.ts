@@ -48,24 +48,7 @@ cpassword?:string;
 
 
 
-          this.repo.userRegister(this.newUser)
-           this.router.navigateByUrl('/login')
-            console.log("register successfully ")
 
-          //   (error) => {
-          //     console.log(error);
-          //     alert('Failed to register user');
-              // Swal.fire({
-              //   icon: 'error',
-              //   title: 'Registration Failed',
-              //   text: 'Failed to register user',
-              //   footer: 'Please try again'
-              // });
-          //   }
-          // );
-
-
-        }
 
 
     else {

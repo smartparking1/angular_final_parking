@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 form!:FormGroup
 submitted = false;
 
+
   constructor(private repo:RepositryService,private router:Router, private formBuilder:FormBuilder) {
 
   }
@@ -41,22 +42,19 @@ submitted = false;
       return
     }
 
-    else if ((this.repo.currentUserRole=='employee')) {
-      console.log(this.repo.currentUserRole)
-      alert("ok this is the employee")
+      else if ((this.repo.currentUserRole == 'employee')) {
+        console.log(this.repo.currentUserRole)
+        alert("ok this is the employee")
 
-      this.router.navigateByUrl('/employee/employee/home')
+        this.router.navigateByUrl('/employee/employee/home')
 
-    }
-  else{
-    alert("this is the else part")
-    console.log('not logged in');
-  } }, 700);
-
-}
+      }
+      else {
+        alert("this is the else part")
+        console.log('not logged in');
+      }
+    }, 7000}
 get f()
 { return this.form.controls; }
-
-
 
 }

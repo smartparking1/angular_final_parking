@@ -8,8 +8,3 @@ export class Login{
   ){}
 }
 
-export class Logins{
-  email_id2?:string
-  password2?:string
-
-}

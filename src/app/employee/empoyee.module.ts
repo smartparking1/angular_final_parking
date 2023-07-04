@@ -9,6 +9,7 @@ import { EmployeeHomepageComponent } from './employee-homepage/employee-homepage
 import { EmplooyeeComponent } from './emplooyee/emplooyee.component';
 import { CommonModule } from '@angular/common';
 import { ExitpointComponent } from './exitpoint/exitpoint.component';
+import { FineComponent } from './fine/fine.component';
 
 
 let routing=RouterModule.forChild([
@@ -27,6 +28,9 @@ let routing=RouterModule.forChild([
         path:'exitpoint', component:ExitpointComponent
       },
       {
+        path:'finepoint',component:FineComponent
+      },
+      {
         path:'**', redirectTo:"home"
       }
     ],
@@ -42,7 +46,8 @@ let routing=RouterModule.forChild([
     imports: [routing,FormsModule ,ReactiveFormsModule],
 
     declarations: [
-        EmplooyeeComponent
+        EmplooyeeComponent,
+        FineComponent
 
     ],
 
