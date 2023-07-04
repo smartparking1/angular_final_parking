@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 import { User } from './user.model';
 import { Building } from './building.model';
+import { Floor } from './floor.model';
+import { vehicle } from './vehilcle.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,6 +25,8 @@ export class RepositryService {
   public isRegister:boolean=false;
   public ListofBuildings:Building[]=[]
   public adminLoginStatus:boolean=false
+  public listOfFloors:Floor[]=[]
+  public vehicle?:vehicle
 
   constructor( private restdata: RestDataService,private router:Router) { }
 
@@ -146,7 +150,9 @@ userRegister(user:User){
   getListOfBuildings(){
     this.restdata.getListOfBuildings().subscribe(
       (res)=>{
+        console.log(res)
       this.ListofBuildings=res
+        console.log(this.ListofBuildings)
       },
       (error)=>{
         Swal.fire({
@@ -160,6 +166,7 @@ userRegister(user:User){
     return this.ListofBuildings
 
   }
+
   chekingAdminLoginStatus(){
     this.adminLoginStatus
     // console.log(this.isLogin,"==================")
@@ -174,6 +181,20 @@ userRegister(user:User){
     }
     }
     return false
+  }
+
+  addFloor(floor:any){
+    console.log()
+    return this.restdata.addFloor(floor).subscribe(data => {
+      // this.listOfFloors.push(data)
+      console.log(data)
+    })
+  }
+
+  saveParking(vehicle: vehicle) {
+    this.restdata.saveParking(vehicle).subscribe((data: vehicle)=>{
+        this.vehicle=data;
+      });
   }
 
 }

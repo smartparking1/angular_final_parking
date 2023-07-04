@@ -1,1 +1,32 @@
-<p>entry-point works!</p>
+<div class="gridbox" >
+  <mat-form-field>
+    <mat-label>Select Floor</mat-label>
+    <mat-select [(ngModel)]="selectedFloor" (ngModelChange)="onFloorSelectionChange($event)">
+      <mat-option *ngFor="let floor of Floors" [value]="floor">{{ floor.floor_no }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="slots">
+    <div *ngFor="let slot of slotsarry">
+      <button class="slot"
+        [ngStyle]="{ 'background-color': slot.status == 'Active' ? 'green' : 'red', 'border-color': selectedSlot === slot ? 'blue' : 'black' }"
+        (click)="selectSlot(slot)">
+        <ng-container *ngIf="!isMarkedd(slot)">{{ slot.slot_name }}</ng-container>
+        <span class="right-mark" *ngIf="isMarkedd(slot)">&#10004;</span>
+      </button>
+    </div>
+  </div>
+  <div class="carNo">
+    <label for="fname" style="font-size: medium;">Car No:</label>
+    <mat-form-field class="example-full-width"  appearance="outline">
+      <input type="text" matInput [(ngModel)]="carNumber">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select Vehicle Type</mat-label>
+      <mat-select matInput [(ngModel)]="vehicleType">
+        <mat-option value="Two Wheeler">Two Wheeler</mat-option>
+        <mat-option value="Four Wheeler">Four Wheeler</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button (click)="save()" class="btn btn-primary btn-sm addButton">Submit</button>
+  </div>

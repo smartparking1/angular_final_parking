@@ -25,6 +25,9 @@ import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 
 import { FloorComponent } from './admin/floor/floor.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -55,11 +58,12 @@ import { FloorComponent } from './admin/floor/floor.component';
     FormsModule,
     ReactiveFormsModule,
    BrowserAnimationsModule,
-   MatIconModule,
-
-
-
-
+   MatFormFieldModule,
+   MatSelectModule,
+   MatBottomSheetModule,
+   CommonModule,
+   MatInputModule,
+     MatIconModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

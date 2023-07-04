@@ -1,0 +1,60 @@
+.form{
+  margin: 40px;
+}
+input{
+  width: 400px;
+}
+.number-box{
+  border: 1px solid black;
+
+}
+
+.number-item{
+margin: 10px 0 5px 30px;
+  width: 100px;
+}
+
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+
+}
+div{
+  margin-bottom: 20px
+}
+.form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+.number-item {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #eaeaea;
+  border: none;
+  cursor: pointer;
+}
+
+.addButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #d4700b;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.card{
+    height: 100%;
+}
+

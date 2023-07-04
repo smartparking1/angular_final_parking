@@ -1,0 +1,32 @@
+::ng-deep body {
+  background-color: rgb(73, 241, 188);
+}
+.gridbox{
+  margin:  0 40px;
+}
+.slots{
+  border: 2px black solid;
+  border-radius: 7px;
+  width: 500px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  box-sizing: initial;
+
+}
+.slot{
+  margin-left: 15px;
+  margin-top: 10px;
+  background-color: #4fff00;
+  height: 50px;
+  width: 50px;
+}
+.carNo{
+  margin: 20px;
+
+}
+mat-form-field{
+  margin-left: 20px;
+
+}
