@@ -1,0 +1,7 @@
+.centered-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust the height as needed */
+  /* background-color: #f0f0f0;  */
+}

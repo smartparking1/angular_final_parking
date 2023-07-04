@@ -1,3 +1,12 @@
+.invalid-feedback{
+color:red;
+margin: -15px;
+margin-left: 0px;
+}
+button{
+  margin-top: 30px;
+}
+
 body {
   background-color: #f8f9fa;
 }
@@ -68,4 +77,8 @@ body {
 .social-btn .btn-info:hover {
   background-color: #008ec3;
   border-color: #008ec3;
+}
+.main{
+  background-color:rgb(31,32,38,0.8);
+  height: 100vh;
 }

@@ -1,5 +1,5 @@
 import { EmployeeModule } from './employee/empoyee.module';
-import { AdminModule } from './admin/admin-home/admin.module';
+import { AdminModule } from './admin/admin.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { RegisterComponent } from './home/register/register.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { EmplooyeeComponent } from './employee/emplooyee/emplooyee.component';
 import { EmployeeHomepageComponent } from './employee/employee-homepage/employee-homepage.component';
+import { UserdetailsComponent } from './home/userdetails/userdetails.component';
 
 const routes: Routes = [
   {
@@ -28,8 +29,12 @@ const routes: Routes = [
   component:RegisterComponent
 },
 {
+  path:"userdetails",
+  component:UserdetailsComponent
+},
+{
   path:"admin",
-  loadChildren:()=> import('./admin/admin-home/admin.module').then(a=>a.AdminModule)
+  loadChildren:()=> import('./admin/admin.module').then(a=>a.AdminModule)
 },
 {
   path:'employee',
@@ -42,4 +47,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const ComponentArry=[AppComponent,LoginComponent,HomeComponent,RegisterComponent,AdminHomeComponent,EmployeeHomepageComponent]
+export const ComponentArry=[AppComponent,LoginComponent,HomeComponent,RegisterComponent,AdminHomeComponent,EmployeeHomepageComponent,UserdetailsComponent]

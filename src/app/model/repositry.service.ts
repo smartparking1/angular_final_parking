@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Login } from './Register.model';
 import { RestDataService } from './rest-data.service';
 import { catchError } from 'rxjs/operators';
@@ -10,23 +10,29 @@ import { User } from './user.model';
 import { Building } from './building.model';
 import { Floor } from './floor.model';
 import { vehicle } from './vehilcle.model';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class RepositryService {
 
   public isLogin:boolean=false;
   public currentUser:User=new User()
   public currentUserRole:string=""
+  public isRegister:boolean=false;
   public ListofBuildings:Building[]=[]
   public adminLoginStatus:boolean=false
   public listOfFloors:Floor[]=[]
   public vehicle?:vehicle
 
-  constructor(private restdata:RestDataService,private router:Router) { }
+  constructor( private restdata: RestDataService,private router:Router) { }
 
 
   employeeLogin(user:Login){
+    console.warn("//pppppppppppppppppppppppppppppppp")
 
     this.restdata.employeeLogin(user).subscribe(
       (res)=>{
@@ -59,6 +65,60 @@ export class RepositryService {
     )
   }
 
+userRegister(user:User){
+  this.restdata.UserRegister(user).subscribe(
+    (res)=>{
+      this.isRegister=true
+      this.isRegister=res
+    },
+    (error)=>{
+      console.log(error);
+      alert(error.error.detail)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.error.detail,
+        footer: 'failed registering'
+      })
+    }
+
+  )
+
+}
+
+
+  // userRegister(user: User) {
+  //   this.restdata.UserRegister(user).subscribe(
+  //     (res) => {
+  //       this.isRegister=true
+  //       console.log("Registration successful");
+  //       console.log(this.userRegister)
+  //       console.log(res.contact);
+
+  //     },
+
+  //     (error) => {
+  //       console.log(error);
+  //       alert('Failed to register user');
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Registration Failed',
+  //         text: 'Failed to register user',
+  //         footer: 'Please try again'
+  //       });
+  //     }
+  //   );
+  //  }
+
+
+  // userRegister(user: User, registrationUrl: string): Observable<any> {
+  //   return this.restdata.UserRegister(user, registrationUrl);
+  // }
+
+
+
+
+
 
   //* for adding building
 
@@ -73,6 +133,7 @@ export class RepositryService {
           showConfirmButton: false,
           timer: 1500
         })
+        EventEmitter
         this.router.navigateByUrl('/admin/admin/home')
       },
       (error)=>{
@@ -107,7 +168,19 @@ export class RepositryService {
   }
 
   chekingAdminLoginStatus(){
-    return this.adminLoginStatus
+    this.adminLoginStatus
+    // console.log(this.isLogin,"==================")
+    const rolecheking=localStorage.getItem('user')
+    if(rolecheking!=null){
+    const role=JSON.parse(rolecheking).role
+    if(role=='admin'){
+      return true
+    }
+    else{
+      return false
+    }
+    }
+    return false
   }
 
   addFloor(floor:any){

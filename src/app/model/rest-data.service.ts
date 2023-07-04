@@ -7,9 +7,13 @@ import { Building } from './building.model';
 import { NgForm } from '@angular/forms';
 import { Floor } from './floor.model';
 import { vehicle } from './vehilcle.model';
+import { User } from './user.model';
+
+
 @Injectable({
   providedIn: 'root'
 })
+// @Injectable()
 export class RestDataService {
 
   constructor(private http:HttpClient) { }
@@ -27,6 +31,17 @@ export class RestDataService {
   addBuilding(building:Building):Observable<Building>{
     return this.http.post<Building>("http://127.0.0.1:8000/building/addingbuilding/",building)
   }
+
+  UserRegister(user: User ): Observable<any> {
+
+    return this.http.post<any>("http://127.0.0.1:8000/Employee/EmployeeRegister/", user);
+  }
+
+  // userRegister(user: User): Observable<any> {
+  //   const registrationUrl = 'http://127.0.0.1:8000/Employee/EmployeeRegister/';
+  //   return this.restdata.serRegister(user, registrationUrl);
+  // }
+
 
   getListOfBuildings():Observable<Building[]>{
 
