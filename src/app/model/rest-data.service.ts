@@ -4,12 +4,17 @@ import { Login } from './Register.model';
 // import 'rxjs/add/oparator/catch';
 import { Observable, throwError } from 'rxjs';
 import { Building } from './building.model';
+<<<<<<< Updated upstream
 import { NgForm } from '@angular/forms';
 import { Floor } from './floor.model';
 import { vehicle } from './vehilcle.model';
 import { User } from './user.model';
 
 
+=======
+import { Floor } from './floor.model';
+import { Form } from '@angular/forms';
+>>>>>>> Stashed changes
 @Injectable({
   providedIn: 'root'
 })
@@ -55,5 +60,10 @@ export class RestDataService {
 
   saveParking(vehicle: vehicle):Observable<vehicle>{
     return this.http.post<vehicle>("http://127.0.0.1:8000/Employee/EmployeeLogin/",vehicle);
+  }
+
+  addfloor(floor:Floor):Observable<Floor>{
+
+      return  this.http.post<Floor>('http://127.0.0.1:8000/building/addingFloorAndGetAllFloors/',floor)
   }
 }

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 import { EventEmitter, Injectable } from '@angular/core';
+=======
+import { Injectable, OnInit } from '@angular/core';
+>>>>>>> Stashed changes
 import { Login } from './Register.model';
 import { RestDataService } from './rest-data.service';
 import { catchError } from 'rxjs/operators';
@@ -9,6 +13,7 @@ import Swal from 'sweetalert2'
 import { User } from './user.model';
 import { Building } from './building.model';
 import { Floor } from './floor.model';
+<<<<<<< Updated upstream
 import { vehicle } from './vehilcle.model';
 import { Observable } from 'rxjs';
 
@@ -18,6 +23,14 @@ import { Observable } from 'rxjs';
 
 
 export class RepositryService {
+=======
+import { Form } from '@angular/forms';
+@Injectable({
+  providedIn: 'root'
+})
+export class RepositryService implements OnInit {
+
+>>>>>>> Stashed changes
 
   public isLogin:boolean=false;
   public currentUser:User=new User()
@@ -28,7 +41,24 @@ export class RepositryService {
   public listOfFloors:Floor[]=[]
   public vehicle?:vehicle
 
+<<<<<<< Updated upstream
   constructor( private restdata: RestDataService,private router:Router) { }
+=======
+  constructor(private restdata:RestDataService,private router:Router) {
+
+   }
+
+  ngOnInit(): void {
+
+
+  }
+
+
+  addfloor(floor: Floor) {
+
+    this.restdata.addfloor(floor);
+}
+>>>>>>> Stashed changes
 
 
   employeeLogin(user:Login){
@@ -44,10 +74,12 @@ export class RepositryService {
         this.currentUser=res.user
         if(this.currentUser.role=='admin'){
           this.adminLoginStatus=true
+
         }
         else{
           this.adminLoginStatus=false
         }
+        console.log(res.user)
 
         this.currentUserRole=res.user.role
         localStorage.setItem('user',JSON.stringify(res.user))
@@ -148,6 +180,7 @@ userRegister(user:User){
   }
 
   getListOfBuildings(){
+<<<<<<< Updated upstream
     this.restdata.getListOfBuildings().subscribe(
       (res)=>{
         console.log(res)
@@ -163,8 +196,14 @@ userRegister(user:User){
         })
       }
     )
+=======
+    this.restdata.getListOfBuildings().subscribe((data)=>{
+      console.warn("hello")
+      this.ListofBuildings=data
+      });
+    console.warn(this.ListofBuildings+"inrfepo")
+>>>>>>> Stashed changes
     return this.ListofBuildings
-
   }
 
   chekingAdminLoginStatus(){
@@ -196,5 +235,6 @@ userRegister(user:User){
         this.vehicle=data;
       });
   }
+
 
 }

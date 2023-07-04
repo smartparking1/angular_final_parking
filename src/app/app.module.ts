@@ -13,14 +13,14 @@ import { FinepageComponent } from './employee/finepage/finepage.component';
 import { BuildingComponent } from './admin/building/building.component';
 import { TokenInterceptor } from './service/admin-inter.interceptor';
 
-
-
+import {MatCardModule} from '@angular/material/card'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+<<<<<<< Updated upstream
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 
@@ -28,6 +28,12 @@ import { FloorComponent } from './admin/floor/floor.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatInputModule} from '@angular/material/input';
+=======
+
+
+
+
+>>>>>>> Stashed changes
 
 
 
@@ -50,6 +56,8 @@ import {MatInputModule} from '@angular/material/input';
     ExitpointComponent,
     FinepageComponent,
     BuildingComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -58,17 +66,30 @@ import {MatInputModule} from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
    BrowserAnimationsModule,
+<<<<<<< Updated upstream
    MatFormFieldModule,
    MatSelectModule,
    MatBottomSheetModule,
    CommonModule,
    MatInputModule,
      MatIconModule,
+=======
+   MatToolbarModule,
+   MatIconModule,
+   MatSidenavModule,
+   MatSelectModule,
+   MatButtonModule,
+   MatCardModule,
+
+
+
+>>>>>>> Stashed changes
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-    multi: true
+    multi: true,
+
   }],
   bootstrap: [AppComponent]
 })
