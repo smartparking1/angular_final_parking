@@ -1,20 +1,32 @@
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <div class="main">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-              <form class="login-form" #form="ngForm" (ngSubmit)="saveLogin(form)"[noValidate]="true">
+              <form class="login-form" [formGroup]="form" (ngSubmit)="saveLogin()"[noValidate]="true">
                 <h2>Login</h2>
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email_id" placeholder="Enter email" [(ngModel)]="login.email_id" [ngModelOptions]="{ standalone: true }">
+                        <input type="email" class="form-control" id="email_id" placeholder="Enter email" [(ngModel)]="login.email_id" name="email"  formControlName="email"
+                         [ngClass]="{ 'is-invalid': (submitted && f['email'].errors) || (f['email'].touched && f['email'].errors) }">
+                         <div *ngIf="submitted || f['email'].touched && f['email'].errors" class="invalid-feedback">
+                          <div *ngIf="f['email'].errors?.['required']">Email is mandatory</div>
+                          <div *ngIf="f['email'].errors?.['email']">Email must be a valid email address</div>
+                        </div>
                       </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password"[(ngModel)]="login.password" [ngModelOptions]="{ standalone: true }">
+                        <input type="password" class="form-control" id="password" placeholder="Password"[(ngModel)]="login.password" name="password" formControlName="password"
+                        [ngClass]="{ 'is-invalid': (submitted && f['password'].errors) || (f['password'].touched && f['password'].errors)}">
+                        <div *ngIf="submitted || f['password'].touched && f['password'].errors" class="invalid-feedback">
+                          <div *ngIf="f['password'].errors?.['required']">Password is mandatory</div>
+                          <div *ngIf="f['password'].errors?.['minlength']">Min 6 letter required</div>
+                          <div *ngIf="f['password'].errors?.['pattern']">Please, Remove space's</div>
+                       </div>
                       </div>
+                      <div>
                     <button type="submit" class="btn btn-primary btn-block login-btn">Login</button>
+                      </div>
                     <div class="social-btn">
                         <button type="button" class="btn btn-primary"><i class="fab fa-facebook-f"></i></button>
                         <button type="button" class="btn btn-danger"><i class="fab fa-google"></i></button>
@@ -29,3 +41,4 @@
     </div>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </div>
+

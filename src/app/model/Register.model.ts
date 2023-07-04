@@ -8,14 +8,3 @@ export class Login{
   ){}
 }
 
-// export class User{
-//   id?:number;
-//   name?:string;
-//   email?:string;
-//   contact?:number;
-//   password?: string;
-//   cpassword?:string;
-//   role?:string;
-
-
-// }
