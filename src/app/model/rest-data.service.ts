@@ -4,6 +4,8 @@ import { Login } from './Register.model';
 // import 'rxjs/add/oparator/catch';
 import { Observable, throwError } from 'rxjs';
 import { Building } from './building.model';
+import { Floor } from './floor.model';
+import { Form } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +27,12 @@ export class RestDataService {
   }
 
   getListOfBuildings():Observable<Building[]>{
+
     return this.http.get<Building[]>("http://127.0.0.1:8000/building/GettingAllBuildings/")
+  }
+
+  addfloor(floor:Floor):Observable<Floor>{
+
+      return  this.http.post<Floor>('http://127.0.0.1:8000/building/addingFloorAndGetAllFloors/',floor)
   }
 }

@@ -9,6 +9,8 @@ import { EmployeeHomepageComponent } from './employee-homepage/employee-homepage
 import { EmplooyeeComponent } from './emplooyee/emplooyee.component';
 import { CommonModule } from '@angular/common';
 import { ExitpointComponent } from './exitpoint/exitpoint.component';
+import { ChoosebuildingComponent } from './choosebuilding/choosebuilding.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 let routing=RouterModule.forChild([
@@ -27,6 +29,9 @@ let routing=RouterModule.forChild([
         path:'exitpoint', component:ExitpointComponent
       },
       {
+        path:'choosebuilding', component:ChoosebuildingComponent
+      },
+      {
         path:'**', redirectTo:"home"
       }
     ],
@@ -39,10 +44,11 @@ let routing=RouterModule.forChild([
 
 @NgModule({
 
-    imports: [routing,FormsModule ,ReactiveFormsModule],
+    imports: [routing,FormsModule ,ReactiveFormsModule,MatCardModule],
 
     declarations: [
-        EmplooyeeComponent
+        EmplooyeeComponent,
+        ChoosebuildingComponent
 
     ],
 
