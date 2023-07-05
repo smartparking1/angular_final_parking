@@ -11,6 +11,7 @@ import { User } from './user.model';
 import { Slots } from './slots.model';
 
 
+import { Form } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
@@ -96,5 +97,10 @@ export class RestDataService {
     }
     console.log(selectedSlot)
     return this.http.put<Slots>(`http://127.0.0.1:8000/building/SlotUpdate/${id}/${selectedSlot.status}/`,"null")
+  }
+
+  addfloor(floor:Floor):Observable<Floor>{
+
+      return  this.http.post<Floor>('http://127.0.0.1:8000/building/addingFloorAndGetAllFloors/',floor)
   }
 }

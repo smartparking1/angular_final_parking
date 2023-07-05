@@ -1,60 +1,86 @@
-.form{
-  margin: 40px;
-}
-input{
-  width: 400px;
-}
-.number-box{
-  border: 1px solid black;
-
+body {
+  background-color: #f8f9fa;
 }
 
-.number-item{
-margin: 10px 0 5px 30px;
-  width: 100px;
+.main {
+  background-color: rgba(31, 32, 38, 0.8);
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-input::-webkit-inner-spin-button {
--webkit-appearance: none;
-
-}
-div{
-  margin-bottom: 20px
-}
-.form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
+.login-form {
+  padding: 30px;
+  background-color: #1f2026;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+  color: #fff;
 }
 
-.form-control {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-
-
-.number-item {
-  display: inline-block;
-  padding: 5px 10px;
-  margin-right: 5px;
-  background-color: #eaeaea;
-  border: none;
-  cursor: pointer;
+.login-btn {
+  color: #fff;
+  background-color: #f58025;
+  border-color: #f58025;
+  transition: all 0.3s;
 }
 
-.addButton {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #d4700b;
-  border: none;
-  color: white;
-  cursor: pointer;
+.login-btn:hover {
+  background-color: #f58025;
+  border-color: #f58025;
 }
 
-.card{
-    height: 100%;
+.social-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
+.social-btn .btn {
+  margin: 0 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.social-btn .btn-primary {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.social-btn .btn-primary:hover {
+  background-color: #344e86;
+  border-color: #344e86;
+}
+
+.social-btn .btn-danger {
+  background-color: #dd4b39;
+  border-color: #dd4b39;
+}
+
+.social-btn .btn-danger:hover {
+  background-color: #d73925;
+  border-color: #d73925;
+}
+
+.social-btn .btn-info {
+  background-color: #00acee;
+  border-color: #00acee;
+}
+
+.social-btn .btn-info:hover {
+  background-color: #008ec3;
+  border-color: #008ec3;
+}
+.form-check-input[type=radio]:checked:after {
+
+  position: relative;
+
+}

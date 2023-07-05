@@ -18,10 +18,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
-import { FloorComponent } from './floor/floor.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatListModule} from '@angular/material/list';
+import { FloorComponent } from './floor/floor.component';
 
 let routing=RouterModule.forChild([
   {

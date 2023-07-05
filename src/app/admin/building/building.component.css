@@ -1,6 +1,28 @@
 body {
   background-color: #f8f9fa;
 }
+.radio-buttons {
+  margin-bottom: 10px;
+}
+
+.radio-buttons label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.error-message{
+  color: #dc1c1c;
+}
+
+.form-group{
+  margin-top: 21px;
+}
+.invalid-feedback{
+  margin-top: -14px;
+}
+.savebutton{
+  margin-top: 34px;
+}
 .login-form {
   margin: 50px auto;
   max-width: 400px;

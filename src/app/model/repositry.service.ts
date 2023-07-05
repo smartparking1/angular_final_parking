@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import {  OnInit } from '@angular/core';
 import { Login } from './Register.model';
 import { RestDataService } from './rest-data.service';
 import { catchError } from 'rxjs/operators';
@@ -18,7 +19,8 @@ import { Slots } from './slots.model';
 })
 
 
-export class RepositryService {
+export class RepositryService implements OnInit {
+
 
   public isLogin:boolean=false;
   public currentUser:User=new User()
@@ -46,6 +48,20 @@ export class RepositryService {
         })
 
    }
+  constructor(private restdata:RestDataService,private router:Router) {
+
+   }
+
+  ngOnInit(): void {
+
+
+  }
+
+
+  addfloor(floor: Floor) {
+
+    this.restdata.addfloor(floor);
+}
 
 
   employeeLogin(user:Login){
@@ -61,10 +77,12 @@ export class RepositryService {
         this.currentUser=res.user
         if(this.currentUser.role=='admin'){
           this.adminLoginStatus=true
+
         }
         else{
           this.adminLoginStatus=false
         }
+        console.log(res.user)
 
         this.currentUserRole=res.user.role
         localStorage.setItem('user',JSON.stringify(res.user))
@@ -94,7 +112,7 @@ userRegister(user:User){
       alert(error.error.detail)
       Swal.fire({
         icon: 'error',
-        title: 'Oops...',
+        title: 'Registering Failed...',
         text: error.error.detail,
         footer: 'failed registering'
       })
@@ -105,38 +123,6 @@ userRegister(user:User){
 }
 
 
-  // userRegister(user: User) {
-  //   this.restdata.UserRegister(user).subscribe(
-  //     (res) => {
-  //       this.isRegister=true
-  //       console.log("Registration successful");
-  //       console.log(this.userRegister)
-  //       console.log(res.contact);
-
-  //     },
-
-  //     (error) => {
-  //       console.log(error);
-  //       alert('Failed to register user');
-  //       Swal.fire({
-  //         icon: 'error',
-  //         title: 'Registration Failed',
-  //         text: 'Failed to register user',
-  //         footer: 'Please try again'
-  //       });
-  //     }
-  //   );
-  //  }
-
-
-  // userRegister(user: User, registrationUrl: string): Observable<any> {
-  //   return this.restdata.UserRegister(user, registrationUrl);
-  // }
-
-
-
-
-
 
   //* for adding building
 
@@ -144,10 +130,11 @@ userRegister(user:User){
 
     this.restdata.addBuilding(buildng).subscribe(
       (res)=>{
+        console.log(res)
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Your work has been saved',
+          title: 'Building Added Successfully.',
           showConfirmButton: false,
           timer: 1500
         })
@@ -168,10 +155,27 @@ userRegister(user:User){
   getListOfBuildings(){
     console.log(this.ListofBuildings)
     return this.ListofBuildings;
-
-
-
-
+    this.restdata.getListOfBuildings().subscribe(
+      (res)=>{
+        console.log(res)
+      this.ListofBuildings=res
+        console.log(this.ListofBuildings)
+      },
+      (error)=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.detail,
+          footer: 'please enter correct details'
+        })
+      }
+    )
+    this.restdata.getListOfBuildings().subscribe((data)=>{
+      console.warn("hello")
+      this.ListofBuildings=data
+      });
+    console.warn(this.ListofBuildings+"inrfepo")
+    return this.ListofBuildings
   }
 
   chekingAdminLoginStatus(){
@@ -221,6 +225,7 @@ userRegister(user:User){
       console.log(data)
     })
    }
+
 
 
 

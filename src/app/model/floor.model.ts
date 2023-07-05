@@ -8,4 +8,5 @@ export class Floor
   public building?:Building
   public location?:string
 
+
 }

@@ -1,7 +1,7 @@
 // import { AgGridModule } from 'ag-grid-angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule, ComponentArry } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -13,8 +13,7 @@ import { FinepageComponent } from './employee/finepage/finepage.component';
 import { BuildingComponent } from './admin/building/building.component';
 import { TokenInterceptor } from './service/admin-inter.interceptor';
 
-
-
+import {MatCardModule} from '@angular/material/card'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -30,17 +29,6 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatInputModule} from '@angular/material/input';
 
 
-
-
-
-
-
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +38,7 @@ import {MatInputModule} from '@angular/material/input';
     ExitpointComponent,
     FinepageComponent,
     BuildingComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,11 +53,22 @@ import {MatInputModule} from '@angular/material/input';
    CommonModule,
    MatInputModule,
      MatIconModule,
+   MatToolbarModule,
+   MatIconModule,
+
+   MatSidenavModule,
+   MatSelectModule,
+   MatButtonModule,
+   MatCardModule,
+
+   FormsModule,
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-    multi: true
+    multi: true,
+
   }],
   bootstrap: [AppComponent]
 })

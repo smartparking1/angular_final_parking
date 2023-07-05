@@ -3,30 +3,74 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-              <form class="login-form" #form="ngForm" (ngSubmit)="saveLogin(form)"[noValidate]="true">
+
+              <form class="login-form" (ngSubmit)="saveLogin()" [formGroup]="form">
+
                 <h2>Add Your Building</h2>
-                    <div class="form-group">
-                        <label for="Building Name">Building Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Building Name" [(ngModel)]="building.building_name" [ngModelOptions]="{ standalone: true }">
-                      </div>
-                    <div class="form-group">
-                        <label for="location">location</label>
-                        <input type="text" class="form-control" id="location" placeholder="location"[(ngModel)]="building.location" [ngModelOptions]="{ standalone: true }">
-                    </div>
-                    <div class="form-group">
-                      <label for="status">status </label><br>
-                      Active <input type="radio" name="status" id="" value="active" [(ngModel)]="building.status">
-                        &nbsp;&nbsp; Inactive <input type="radio" name="status" id="" value="Inactive"  [(ngModel)]="building.status">
+
+                <div class="form-group">
+                  <label for="buildingName">Building Name</label>
+                  <input type="text" class="form-control" id="buildingName" placeholder="Enter Building Name" formControlName="buildingName" name="buildingName" [(ngModel)]="building.building_name"
+                    [ngClass]="{ 'is-invalid': (submitted && form.controls['buildingName'].errors) || (form.controls['buildingName'].touched && form.controls['buildingName'].errors) } || (form.controls['buildingName'].touched && form.controls['buildingName'].errors)">
+                  <div *ngIf="submitted||form.controls['buildingName']?.touched && (form.controls['buildingName'].errors )" class="invalid-feedback">
+                    <div *ngIf="form.controls['buildingName'].errors?.['required']">Building Name is required</div>
+                    <div *ngIf="form.controls['buildingName'].errors?.['pattern']">Only alphabets allowed</div>
+                    <div *ngIf="form.controls['buildingName'].errors?.['minlength']">Min 6 letter required</div>
                   </div>
-                  <div class="form-group">
-                    <label for="no_of_Floors">No of Floors</label>
-                    <input type="number" class="form-control" id="no_of_Floors" placeholder="no_of_Floors"[(ngModel)]="building.no_of_floors" [ngModelOptions]="{ standalone: true }">
+                </div>
+                <div class="form-group">
+                  <label for="image">Image</label>
+                  <input type="file" class="form-control-file" id="image" (change)="onFileSelected($event)">
+              </div>
+
+                <div class="form-group">
+                  <label for="location">location</label>
+                  <input type="text" class="form-control" id="location" placeholder="Enter location" formControlName="location" name="location" [(ngModel)]="building.location"
+                    [ngClass]="{ 'is-invalid': (submitted && form.controls['location'].errors) || (form.controls['location'].touched && form.controls['location'].errors) } || (form.controls['location'].touched && form.controls['location'].errors)">
+                  <div *ngIf="submitted||form.controls['location']?.touched && (form.controls['location'].errors )" class="invalid-feedback">
+                    <div *ngIf="form.controls['location'].errors?.['required']">location is required</div>
+                    <div *ngIf="form.controls['location'].errors?.['pattern']">Only alphabets allowed</div>
+                    <div *ngIf="form.controls['location'].errors?.['minlength']">Min 6 letter required</div>
+                  </div>
                 </div>
 
-                    <button type="submit" class="btn btn-primary btn-block login-btn">Save</button>
-                </form>
+
+                <div class="radio-buttons">
+
+                  <label >Select Status</label><br>
+                  <input type="radio" id="active" name="status" value="active" [(ngModel)]="building.status" formControlName="status">
+                <label for="active">Active</label>
+
+                <input type="radio" id="inactive" name="status" value="inactive" [(ngModel)]="building.status" formControlName="status">
+                <label for="inactive">Inactive</label>
+
+                  <div *ngIf="statusError ||submitted" class="invalid-feedback">
+                    Please select a role.
+                  </div>
+                </div>
+
+
+
+                <div class="form-group">
+                  <label for="">noOfFloors</label>
+                  <input type="number" class="form-control" id="noOfFloors" placeholder="Enter noOfFloors" formControlName="noOfFloors" name="noOfFloors" [(ngModel)]="building.no_of_floors"
+                    [ngClass]="{ 'is-invalid': (submitted && form.controls['noOfFloors'].errors) || (form.controls['noOfFloors'].touched && form.controls['noOfFloors'].errors) } || (form.controls['noOfFloors'].touched && form.controls['noOfFloors'].errors)">
+                  <div *ngIf="submitted||form.controls['noOfFloors']?.touched && (form.controls['noOfFloors'].errors )" class="invalid-feedback">
+                    <div *ngIf="form.controls['noOfFloors'].errors?.['required']">noOfFloors is required</div>
+                  </div>
+                </div>
+                <div class="savebutton">
+                <button type="submit" class="btn btn-primary btn-block login-btn" >Save</button>
+              </div>
+              </form>
+
+
+
+
+
             </div>
         </div>
     </div>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </div>
+
