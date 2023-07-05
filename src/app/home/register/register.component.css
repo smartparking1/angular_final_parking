@@ -11,12 +11,9 @@
   color: #dc1c1c;
 }
 
-body {
-  background-color: #f8f9fa;
-}
 .login-form {
   margin: 30px auto;
-  max-width: 600px;
+  max-width: 500px;
   padding: 30px;
   max-height: 1000px;
   background-color: #1f2026;
@@ -84,3 +81,6 @@ body {
   border-color: #008ec3;
 }
 
+.main{
+  height: fit-content;
+}

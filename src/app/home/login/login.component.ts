@@ -34,7 +34,7 @@ submitted = false;
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^\S*$/)]]
+      password: ['', [Validators.required, Validators.pattern(/^\S*$/)]]
     });
   }
 
@@ -101,7 +101,6 @@ submitted = false;
   }
   get f()
   { return this.form.controls; }
-
 
 }
 
