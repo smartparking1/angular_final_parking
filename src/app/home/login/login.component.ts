@@ -43,6 +43,10 @@ submitted = false;
 
 
   saveLogin(){
+   const obj= this.repo.employeeLogin(this.login)
+   if (this.form.invalid) {
+    return;
+    }
 
     this.restdata.employeeLogin(this.login).subscribe(
       (res)=>{
@@ -76,7 +80,7 @@ submitted = false;
 
 
    setTimeout(() => {
-<<<<<<< Updated upstream
+
    const loginrole=localStorage.getItem('user')
     console.log(loginrole)
     if(loginrole!=null){
@@ -89,23 +93,26 @@ submitted = false;
       console.log("okkkkkkkkkkkkkk")
       this.router.navigateByUrl('/admin/home')
 
-=======
+
     if(this.repo.currentUserRole=='admin'){
       this.router.navigateByUrl('/admin/admin/home')
->>>>>>> Stashed changes
+
       return
     }
     else if ((this.repo.currentUserRole=='employee')) {
       console.log(this.repo.currentUserRole,"............................")
       alert("ok this is the employee")
 
-<<<<<<< Updated upstream
+      else if ((this.repo.currentUserRole == 'employee')) {
+
+        alert("ok this is the employee")
+
       this.router.navigateByUrl('/employee/employee/choosebuilding')
-=======
+
       else if ((this.repo.currentUserRole == 'employee')) {
         console.log(this.repo.currentUserRole)
         // alert("ok this is the employee")
->>>>>>> Stashed changes
+
 
     }
   else{
@@ -117,16 +124,7 @@ submitted = false;
   get f()
   { return this.form.controls; }
 
-<<<<<<< Updated upstream
-=======
-      }
-      else {
-        alert("this is the else part")
-        console.log('not logged in');
-      }
-    }, 700)}
-get f()
-{ return this.form.controls; }
->>>>>>> Stashed changes
 
+    
 }
+

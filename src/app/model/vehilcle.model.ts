@@ -1,7 +1,6 @@
 export class vehicle
 {
   constructor(
-    public id?:number,
     public vehicle_no?:string,
     public vehicle_type?:string,
     public checkin_time?:Date,
