@@ -80,28 +80,17 @@ submitted = false;
 
 
    setTimeout(() => {
-   const loginrole=localStorage.getItem('user')
-    console.log(loginrole)
-    if(loginrole!=null){
-      var role=JSON.parse(loginrole)
-      console.log(role.role,"okkkkkkkkkkkkkkkkkk")
-      this.router.navigateByUrl('/admin/home')
-
-    }
-    if(role=='admin'){
-      console.log("okkkkkkkkkkkkkk")
-      this.router.navigateByUrl('/admin/home')
-
+    if(this.repo.currentUserRole=='admin'){
+      this.router.navigateByUrl('/admin/admin/home')
       return
     }
     else if ((this.repo.currentUserRole=='employee')) {
       console.log(this.repo.currentUserRole,"............................")
       alert("ok this is the employee")
-
+    }
       else if ((this.repo.currentUserRole == 'employee')) {
-
-        alert("ok this is the employee")
-      this.router.navigateByUrl('/employee/employee/choosebuilding')
+        console.log(this.repo.currentUserRole)
+        // alert("ok this is the employee")
 
     }
   else{
@@ -113,15 +102,6 @@ submitted = false;
   get f()
   { return this.form.controls; }
 
-      }
-      else {
-        alert("this is the else part")
-        console.log('not logged in');
-      }
-    }, 7000)
-  }
-get f()
-{ return this.form.controls; }
 
 }
 
