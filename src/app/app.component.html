@@ -6,15 +6,22 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a style="color: white;" class="nav-link"routerLink="/home">Home</a>
+          <a style="color: white;" class="nav-link"routerLink="/home"> <img src="../assets/home.png"  class="icon" srcset="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a style="color: white;" class="nav-link"routerLink="/home"> <img src="../assets/information.png"  class="icon" srcset="">About</a>
         </li>
         <li class="nav-item">
           <a  style="color: white;  " class="nav-link" href="#">Content</a>
         </li>
+        <li class="nav-item" *ngIf="loginStatus()" >
+           <a  style="color: white;  " class="nav-link" routerLink="/employee/empoyee/home">Buildings</a>
+        </li>
         <li class="nav-item">
           <a  style="color: white;" class="nav-link"  routerLink="/login" *ngIf="!loginStatus()">Login</a>
 
-          <a><i class="fa-solid fa-user"  style="color: #f54100; width: 50px; height: 50px;" *ngIf="loginStatus()" routerLink="/userdetails"></i>details</a>
+          <!-- <a><i class="fa-solid fa-user"  style="color: #f54100; width: 50px; height: 50px;" *ngIf="loginStatus()" routerLink="/userdetails"></i>details</a> -->
+          <img src="../assets/profile.png" alt="" class="userdetails" *ngIf="loginStatus()" routerLink="/userdetails">
         </li>
       </ul>
     </div>
