@@ -32,7 +32,6 @@ submitted = false;
 
   saveLogin(){
    const obj= this.repo.employeeLogin(this.login)
-
    if (this.form.invalid) {
     return;
     }
@@ -43,7 +42,7 @@ submitted = false;
     }
 
       else if ((this.repo.currentUserRole == 'employee')) {
-        console.log(this.repo.currentUserRole)
+
         alert("ok this is the employee")
 
         this.router.navigateByUrl('/employee/employee/home')
@@ -53,8 +52,10 @@ submitted = false;
         alert("this is the else part")
         console.log('not logged in');
       }
-    }, 7000}
+    }, 7000)
+  }
 get f()
 { return this.form.controls; }
 
 }
+

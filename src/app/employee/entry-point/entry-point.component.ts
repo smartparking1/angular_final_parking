@@ -6,6 +6,8 @@ import { RepositryService } from 'src/app/model/repositry.service';
 import { vehicle } from 'src/app/model/vehilcle.model';
 import { Slots } from 'src/app/model/slots.model';
 import { Floor } from 'src/app/model/floor.model';
+import { Building } from 'src/app/model/building.model';
+import { RestDataService } from 'src/app/model/rest-data.service';
 
 
 
@@ -17,55 +19,51 @@ import { Floor } from 'src/app/model/floor.model';
 })
 export class EntryPointComponent implements OnInit{
 
+  selectedBuilding?:Building
   parkingDetails?:vehicle
   selectedFloor?:any;
   selectedSlot: any;
   isMarked?: boolean=false;
   carNumber?: string;
   slotsarry: Slots[]=[]
+  buildings:Building[]=[]
+  floors: Floor[] = [];
+  filterFloors : Floor[] = [];
+  slotarry: Slots[] =[]
+  filterSlot : Slots[] = []
+  parking_amount?:number
 
-  public floors:any;
   public vehicleType:string="";
- slotarry: Slots[] =[
-  { slot_id: 1, slot_name: "Slot A", status: "Active", floor_id: 2},
-    { slot_id: 2, slot_name: "Slot B", status: "Inactive", floor_id: 2 },
-    { slot_id: 3, slot_name: "Slot C", status: "Active", floor_id: 2 },
-    { slot_id: 4, slot_name: "Slot D", status: "Inactive", floor_id: 2 },
-    { slot_id: 5, slot_name: "Slot E", status: "Active", floor_id: 2 },
-    { slot_id: 6, slot_name: "Slot F", status: "Inactive", floor_id: 2 },
-    { slot_id: 7, slot_name: "Slot G", status: "Active", floor_id: 2 },
-    { slot_id: 8, slot_name: "Slot H", status: "Inactive", floor_id: 2 },
-    { slot_id: 9, slot_name: "Slot I", status: "Active", floor_id: 2 },
-    { slot_id: 10, slot_name: "Slot J", status: "Inactive", floor_id: 2 },
-    { slot_id: 1, slot_name: "Slot A", status: "Inactive", floor_id: 1},
-    { slot_id: 2, slot_name: "Slot B", status: "Inactive", floor_id: 1 },
-    { slot_id: 3, slot_name: "Slot C", status: "Inactive", floor_id: 1 },
-    { slot_id: 4, slot_name: "Slot D", status: "Inactive", floor_id: 1 },
-    { slot_id: 5, slot_name: "Slot E", status: "Active", floor_id: 1 },
-    { slot_id: 6, slot_name: "Slot F", status: "Active", floor_id: 1 },
-    { slot_id: 7, slot_name: "Slot G", status: "Active", floor_id: 1 },
-    { slot_id: 8, slot_name: "Slot H", status: "Active", floor_id: 1 },
-    { slot_id: 9, slot_name: "Slot I", status: "Active", floor_id: 1 },
-    { slot_id: 10, slot_name: "Slot J", status: "Active", floor_id: 1 }
-]
 
 
-Floors: Floor[] = []
-  constructor(private checkInService:RepositryService) {
+
+
+  constructor(private repo:RepositryService) {
 
    }
 
-  onFloorSelectionChange(selectedFloor: any) {
-   this.slotsarry=this.slotarry.filter(data =>data.floor_id==selectedFloor.floor_id)
+   ngOnInit(): void {
+    this.buildings=this.repo.getListOfBuildings();
+
   }
 
-  ngOnInit(): void {
+  onBuildingSelection(selectedBuilding:any) {
+    this.gettingFloors();
+    this.filterFloors = [];
+    this.filterFloors = this.floors.filter((data)=> data.building == this.selectedBuilding?.building_id)
+  }
+
+  onFloorSelectionChange(selectedFloor: any) {
+    console.log(this.selectedFloor)
+    this.gettingSlots();
+    this.filterSlot = []
+    this.filterSlot = this.slotarry.filter(data =>data.floor == this.selectedFloor?.floor_id)
 
   }
 
  // Change the type to match your slot object type
   selectSlot(slot: any) {
-    if(slot.status=='Inactive')
+    if(slot.status=='inactive')
     {
       Swal.fire(" Parking slot is already occupied !","Select Another Slot\u{1F60A}","error");
       slot=null
@@ -83,6 +81,11 @@ Floors: Floor[] = []
   }
 //method for parkingsaving
   save(){
+    let id = localStorage.getItem('user')
+    var id_of_employee;
+   if(id!=null){
+     id_of_employee= JSON.parse(id).id
+   }
     this.parkingDetails={}
 const currentDate = new Date();
 const formattedDate = currentDate.toLocaleTimeString() // Convert to time string format
@@ -90,7 +93,31 @@ const formattedDate = currentDate.toLocaleTimeString() // Convert to time string
  this.parkingDetails!.vehicle_no=this.carNumber;
  this.parkingDetails!.slot=this.selectedSlot.slot_id;
  this.parkingDetails.vehicle_type=this.vehicleType;
-  this.checkInService.saveParking(this.parkingDetails);
+ this.parkingDetails.parking_amount = this.parking_amount;
+ this.parkingDetails.fine_amount = 0;
+ this.parkingDetails.slot = this.selectedSlot.slot_id;
+ this.parkingDetails.checkin_by = id_of_employee;
+  this.repo.saveParking(this.parkingDetails);
+  // this.selectedSlot.status="inactive";
+  // this.repo.updateSlot(this.selectedSlot)
+  }
+
+  updateSlot(selectedSlot:Slots){
+    console.log(selectedSlot)
+    this.repo.updateSlot(selectedSlot)
+  }
+
+  getbuildings(){
+    return this.buildings;
+  }
+
+  gettingFloors() {
+    this.floors = this.repo.gettingFloors();
+    // this.filterFloor = this.floors.filter((data)=> data.building == this.selectedBuilding?.building_id)
+  }
+
+  gettingSlots() {
+    this.slotarry = this.repo.gettingSlots();
   }
 
 }
