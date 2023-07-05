@@ -48,7 +48,13 @@ cpassword?:string;
 
 
 
-    }
+          this.repo.userRegister(this.newUser)
+           this.router.navigateByUrl('/login')
+            console.log("register successfully ")
+        }
+
+
+    
 
 
     
@@ -64,9 +70,7 @@ cpassword?:string;
       } else {
         console.log("passwords do not match");
       }
-    // }
-  }
-  }
+    // }
+  }
+  }
 }
-
-

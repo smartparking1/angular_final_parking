@@ -31,6 +31,8 @@ export class RepositryService implements OnInit {
   public listOfFloors:Floor[]=[]
   public listOfSlots:Slots[] = []
   public vehicle?:vehicle
+
+  public allusers:vehicle[]=[]
   public employee?:User
 
   constructor( private restdata: RestDataService,private router:Router) {
@@ -199,6 +201,15 @@ userRegister(user:User){
     return this.restdata.addFloor(floor).subscribe(data => {
       // this.listOfFloors.push(data)
       console.log(data)
+    },(error)=>{
+
+      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text:'ALL Floors add alredy' ,
+        footer: 'please enter correct details'
+      })
     })
   }
 
@@ -230,4 +241,32 @@ userRegister(user:User){
 
 
 
+  getallusers(){
+    this.restdata.getallusers().subscribe(
+      (responce:any)=>{
+        this.allusers=responce
+      }
+    )
+    return this.allusers
+  }
+
+  
+
+gettingallEmployees(){
+    this.restdata.gettingallEmployees().subscribe(
+      (responce)=>{
+        console.log(responce)
+        return responce
+      },
+      (error)=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text:'ALL Floors add alredy' ,
+          footer: 'please enter correct details'
+        })
+
+      }
+    )
+  }
 }

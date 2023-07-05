@@ -34,7 +34,7 @@ submitted = false;
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^\S*$/)]]
+      password: ['', [Validators.required, Validators.pattern(/^\S*$/)]]
     });
   }
 
@@ -80,6 +80,7 @@ submitted = false;
 
 
    setTimeout(() => {
+
    const loginrole=localStorage.getItem('user')
     console.log(loginrole)
     if(loginrole!=null){
@@ -92,6 +93,10 @@ submitted = false;
       console.log("okkkkkkkkkkkkkk")
       this.router.navigateByUrl('/admin/home')
 
+
+    if(this.repo.currentUserRole=='admin'){
+      this.router.navigateByUrl('/admin/admin/home')
+
       return
     }
     else if ((this.repo.currentUserRole=='employee')) {
@@ -101,7 +106,13 @@ submitted = false;
       else if ((this.repo.currentUserRole == 'employee')) {
 
         alert("ok this is the employee")
+
       this.router.navigateByUrl('/employee/employee/choosebuilding')
+
+      else if ((this.repo.currentUserRole == 'employee')) {
+        console.log(this.repo.currentUserRole)
+        // alert("ok this is the employee")
+
 
     }
   else{
@@ -113,15 +124,7 @@ submitted = false;
   get f()
   { return this.form.controls; }
 
-      }
-      else {
-        alert("this is the else part")
-        console.log('not logged in');
-      }
-    }, 7000)
-  }
-get f()
-{ return this.form.controls; }
 
+    
 }
 

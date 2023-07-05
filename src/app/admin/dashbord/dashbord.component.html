@@ -1,1 +1,63 @@
-<p>dashbord works!</p>
+<div class="main">
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card total">
+        <div class="card-body" >
+          <h5 class="card-title" style="color: rgb(0, 0, 0);">Total Amount (today)</h5>
+          <p class="card-text">{{total_amout}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" >
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With su pporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Sl_no</th>
+        <th scope="col">vehicle_no</th>
+        <th scope="col">vehicle_type</th>
+        <th scope="col">checkin_time</th>
+        <th scope="col">checkout_time</th>
+        <th scope="col">slot</th>
+        <th scope="col">fine_amount</th>
+        <th scope="col">parking_amount</th>
+        <th scope="col">total_amount</th>
+        <th scope="col">checkin_by</th>
+        <th scope="col">checkout_by</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let customer of allcustomers">
+      <td>{{customer.id}}</td>
+      <td>{{customer.vehicle_no}}</td>
+      <td>{{customer.vehicle_type}}</td>
+      <td>{{customer.checkin_time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+      <td>{{customer.checkout_time}}</td>
+      <td>{{customer.slot}}</td>
+      <td>{{customer.fine_amount}}</td>
+      <td>{{customer.parking_amount}}</td>
+      <td>{{customer.total_amount}}</td>
+      <td>{{customer.checkin_by}}</td>
+      <td>{{customer.checkout_by}}</td>
+
+     </tr>
+    </tbody>
+  </table>
+
+</div>
