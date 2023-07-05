@@ -1,16 +1,22 @@
 <div class="gridbox" >
   <mat-form-field>
+    <mat-label>Select Building</mat-label>
+    <mat-select [(ngModel)]="selectedBuilding" (ngModelChange)="onBuildingSelection($event)">
+      <mat-option *ngFor="let building of buildings" [value]="building">{{ building.building_name }}-{{building.location}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
     <mat-label>Select Floor</mat-label>
     <mat-select [(ngModel)]="selectedFloor" (ngModelChange)="onFloorSelectionChange($event)">
-      <mat-option *ngFor="let floor of Floors" [value]="floor">{{ floor.floor_no }}</mat-option>
+      <mat-option *ngFor="let floor of filterFloors" [value]="floor">{{ floor.floor_no }}</mat-option>
     </mat-select>
   </mat-form-field>
   <div class="slots">
-    <div *ngFor="let slot of slotsarry">
+    <div *ngFor="let slot of filterSlot;let i = index">
       <button class="slot"
-        [ngStyle]="{ 'background-color': slot.status == 'Active' ? 'green' : 'red', 'border-color': selectedSlot === slot ? 'blue' : 'black' }"
-        (click)="selectSlot(slot)">
-        <ng-container *ngIf="!isMarkedd(slot)">{{ slot.slot_name }}</ng-container>
+        [ngStyle]="{ 'background-color': slot.status == 'active' ? 'green' : 'red', 'border-color': selectedSlot === slot ? 'blue' : 'black' }"
+        (click)="[selectSlot(slot)]">
+        <ng-container *ngIf="!isMarkedd(slot)">S-{{ i+1 }}</ng-container>
         <span class="right-mark" *ngIf="isMarkedd(slot)">&#10004;</span>
       </button>
     </div>
@@ -18,7 +24,11 @@
   <div class="carNo">
     <label for="fname" style="font-size: medium;">Car No:</label>
     <mat-form-field class="example-full-width"  appearance="outline">
-      <input type="text" matInput [(ngModel)]="carNumber">
+      <input type="text" matInput [(ngModel)]="carNumber" placeholder="00 00 00 0000">
+    </mat-form-field>
+    <label for="fname" style="font-size: medium;">Parking Amount:</label>
+    <mat-form-field class="example-full-width"  appearance="outline">
+      <input type="number" matInput [(ngModel)]="parking_amount" >
     </mat-form-field>
     <mat-form-field>
       <mat-label>Select Vehicle Type</mat-label>
@@ -28,5 +38,5 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <button (click)="save()" class="btn btn-primary btn-sm addButton">Submit</button>
+  <button (click)="[save(),updateSlot(selectedSlot)]" class="btn btn-primary btn-sm addButton">Submit</button>
   </div>

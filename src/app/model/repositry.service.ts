@@ -12,6 +12,7 @@ import { Building } from './building.model';
 import { Floor } from './floor.model';
 import { vehicle } from './vehilcle.model';
 import { Observable } from 'rxjs';
+import { Slots } from './slots.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,25 @@ export class RepositryService implements OnInit {
   public ListofBuildings:Building[]=[]
   public adminLoginStatus:boolean=false
   public listOfFloors:Floor[]=[]
+  public listOfSlots:Slots[] = []
   public vehicle?:vehicle
+  public employee?:User
 
+  constructor( private restdata: RestDataService,private router:Router) {
+      this.restdata.gettingFloors().subscribe((data) => {
+          this.listOfFloors=data;
+      })
+
+      this.restdata.gettingSlots().subscribe((data)=>{
+          this.listOfSlots = data;
+      })
+
+      this.restdata.getListOfBuildings().subscribe(
+        (res)=>{
+        this.ListofBuildings=res
+        })
+
+   }
   constructor(private restdata:RestDataService,private router:Router) {
 
    }
@@ -49,7 +67,7 @@ export class RepositryService implements OnInit {
   employeeLogin(user:Login){
     console.warn("//pppppppppppppppppppppppppppppppp")
 
-    this.restdata.employeeLogin(user).subscribe(
+     this.restdata.employeeLogin(user).subscribe(
       (res)=>{
         this.isLogin=true
         console.log("ok this is working")
@@ -81,6 +99,7 @@ export class RepositryService implements OnInit {
       }
     )
   }
+
 
 userRegister(user:User){
   this.restdata.UserRegister(user).subscribe(
@@ -134,6 +153,8 @@ userRegister(user:User){
   }
 
   getListOfBuildings(){
+    console.log(this.ListofBuildings)
+    return this.ListofBuildings;
     this.restdata.getListOfBuildings().subscribe(
       (res)=>{
         console.log(res)
@@ -181,11 +202,32 @@ userRegister(user:User){
     })
   }
 
+  gettingFloors() {
+
+      return  this.listOfFloors;
+
+  }
+
+  gettingSlots() {
+      return this.listOfSlots;
+  }
+
   saveParking(vehicle: vehicle) {
+
     this.restdata.saveParking(vehicle).subscribe((data: vehicle)=>{
         this.vehicle=data;
       });
+
   }
+
+  updateSlot(selectedSlot:Slots) {
+    this.restdata.updateSlot(selectedSlot).subscribe(data =>{
+      console.log(data)
+    })
+   }
+
+
+
 
 
 }

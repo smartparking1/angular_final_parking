@@ -43,6 +43,10 @@ submitted = false;
 
 
   saveLogin(){
+   const obj= this.repo.employeeLogin(this.login)
+   if (this.form.invalid) {
+    return;
+    }
 
     this.restdata.employeeLogin(this.login).subscribe(
       (res)=>{
@@ -94,6 +98,9 @@ submitted = false;
       console.log(this.repo.currentUserRole,"............................")
       alert("ok this is the employee")
 
+      else if ((this.repo.currentUserRole == 'employee')) {
+
+        alert("ok this is the employee")
       this.router.navigateByUrl('/employee/employee/choosebuilding')
 
     }
@@ -106,5 +113,15 @@ submitted = false;
   get f()
   { return this.form.controls; }
 
+      }
+      else {
+        alert("this is the else part")
+        console.log('not logged in');
+      }
+    }, 7000)
+  }
+get f()
+{ return this.form.controls; }
 
 }
+

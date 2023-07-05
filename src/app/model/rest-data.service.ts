@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { Floor } from './floor.model';
 import { vehicle } from './vehilcle.model';
 import { User } from './user.model';
+import { Slots } from './slots.model';
 
 
 import { Form } from '@angular/forms';
@@ -17,8 +18,10 @@ import { Form } from '@angular/forms';
 // @Injectable()
 export class RestDataService {
 
+
   constructor(private http:HttpClient) { }
 
+  // public status:string = 'inactive'
   buildings:Building[] = []
 
   employeeLogin(user:Login):Observable<any>{
@@ -54,8 +57,46 @@ export class RestDataService {
     return this.http.post<Floor>("http://127.0.0.1:8000/building/addingFloorAndGetAllFloors/",floor)
   }
 
+  gettingFloors():Observable<Floor[]>{
+    return this.http.get<Floor[]>("http://127.0.0.1:8000/building/addingFloorAndGetAllFloors/")
+  }
+
+  gettingSlots():Observable<Slots[]>{
+    return this.http.get<Slots[]>("http://127.0.0.1:8000/building/gettingallslots/")
+  }
+
+
+
   saveParking(vehicle: vehicle):Observable<vehicle>{
-    return this.http.post<vehicle>("http://127.0.0.1:8000/Employee/EmployeeLogin/",vehicle);
+    return this.http.post<vehicle>("http://127.0.0.1:8000/vehicleparking/insertvehicleparking/",vehicle);
+  }
+
+  // updateSlot(status:any,selectedSlot: any):Observable<Slots> {
+  //   let id=selectedSlot.slot_id
+  //   console.log(selectedSlot+'----------------------')
+  //   console.log(selectedSlot.status)
+  //   if(selectedSlot.status == 'active') {
+  //     selectedSlot.status = 'inactive'
+  //   }else {
+  //     selectedSlot.status = 'active'
+  //   }
+  //   console.log(selectedSlot.status)
+  //   console.log(selectedSlot)
+  //   console.log(id)
+  //   return this.http.put<Slots>(`http://127.0.0.1:8000/building/SlotUpdate/${id}`,selectedSlot)
+  // }
+
+  updateSlot(selectedSlot: any):Observable<Slots> {
+    let id=selectedSlot.slot_id
+    console.log(id)
+    console.log(selectedSlot)
+    if(selectedSlot.status == 'active') {
+      selectedSlot.status = 'inactive'
+    } else {
+      selectedSlot.status = 'active'
+    }
+    console.log(selectedSlot)
+    return this.http.put<Slots>(`http://127.0.0.1:8000/building/SlotUpdate/${id}/${selectedSlot.status}/`,"null")
   }
 
   addfloor(floor:Floor):Observable<Floor>{
