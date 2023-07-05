@@ -87,3 +87,6 @@
 .mat-list-item{
   color: #fff;
 }
+img{
+  filter: saturate(200px);
+}

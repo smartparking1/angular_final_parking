@@ -17,7 +17,7 @@ export class UserdetailsComponent implements OnInit {
     const user = localStorage.getItem('user')
     console.log(user, "this we getting from local storage")
     if (user != null) {
-      // console.log(JSON.parse(user), "this is we are grttig")
+      console.log(JSON.parse(user), "this is we are grttig")
       this.user = JSON.parse(user)
     }
   }

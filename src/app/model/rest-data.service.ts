@@ -62,4 +62,14 @@ export class RestDataService {
 
       return  this.http.post<Floor>('http://127.0.0.1:8000/building/addingFloorAndGetAllFloors/',floor)
   }
+  getallusers():Observable<vehicle[]>{
+    return this.http.get<vehicle[]>('http://127.0.0.1:8000/vehicleparking/getallvehicleparking/')
+  }
+
+  gettingallEmployees():Observable<User[]>{
+    return this.http.get<User[]>('http://127.0.0.1:8000/Employee/GettingAllEmployeeList/')
+  }
+
+
+
 }

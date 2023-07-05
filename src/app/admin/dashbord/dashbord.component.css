@@ -1,0 +1,23 @@
+.customcards{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  /* margin-top: -20px; negative value of the height */
+  padding-bottom: 15px;
+
+}
+
+.customcards>div{
+  width: 20px;
+  height: 30px;
+  background-color: black;
+}
+.total{
+  background-color:   rgba(45, 255, 125, 0.3);
+  border: 2px solid rgb(9, 255, 9);
+  color: #fff;
+}
+.main{
+  background-color:rgb(31,32,38,0.8);
+
+}

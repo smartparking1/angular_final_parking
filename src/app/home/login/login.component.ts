@@ -34,7 +34,7 @@ submitted = false;
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^\S*$/)]]
+      password: ['', [Validators.required, Validators.pattern(/^\S*$/)]]
     });
   }
 
@@ -76,6 +76,7 @@ submitted = false;
 
 
    setTimeout(() => {
+<<<<<<< Updated upstream
    const loginrole=localStorage.getItem('user')
     console.log(loginrole)
     if(loginrole!=null){
@@ -88,13 +89,23 @@ submitted = false;
       console.log("okkkkkkkkkkkkkk")
       this.router.navigateByUrl('/admin/home')
 
+=======
+    if(this.repo.currentUserRole=='admin'){
+      this.router.navigateByUrl('/admin/admin/home')
+>>>>>>> Stashed changes
       return
     }
     else if ((this.repo.currentUserRole=='employee')) {
       console.log(this.repo.currentUserRole,"............................")
       alert("ok this is the employee")
 
+<<<<<<< Updated upstream
       this.router.navigateByUrl('/employee/employee/choosebuilding')
+=======
+      else if ((this.repo.currentUserRole == 'employee')) {
+        console.log(this.repo.currentUserRole)
+        // alert("ok this is the employee")
+>>>>>>> Stashed changes
 
     }
   else{
@@ -106,5 +117,16 @@ submitted = false;
   get f()
   { return this.form.controls; }
 
+<<<<<<< Updated upstream
+=======
+      }
+      else {
+        alert("this is the else part")
+        console.log('not logged in');
+      }
+    }, 700)}
+get f()
+{ return this.form.controls; }
+>>>>>>> Stashed changes
 
 }

@@ -27,6 +27,18 @@ import { FloorComponent } from './admin/floor/floor.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
+
+import { DatePipe } from '@angular/common';
+
+
+
+
+
+
+
+
+
 
 
 @NgModule({
@@ -62,12 +74,14 @@ import {MatInputModule} from '@angular/material/input';
    MatCardModule,
 
    FormsModule,
+     MatTableModule,
 
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true,
+
 
   }],
   bootstrap: [AppComponent]
