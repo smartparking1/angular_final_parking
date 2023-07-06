@@ -1,10 +1,50 @@
-<p>exitpoint works!</p>
-<p>exitpoint works!</p>
-<p>exitpoint works!</p>
-<p>exitpoint works!</p>
-<p>exitpoint works!</p>
-<p>exitpoint works!</p>
-<p>exitpoint works!</p>
-<p>exitpoint works!</p>
-<p>exitpoint works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exit</title>
 
+  <style>
+    #enterlabel{
+      font-style: normal;
+      font-size: larger;
+      color: rgb(240, 48, 22);
+    }
+    #submitButton{
+      margin-left: 90px;
+    }
+  </style>
+</head>
+<body>
+
+
+<form class="form-inline"  (ngSubmit)="getVehicles" >
+  <table align="center">
+    <tr>
+      <td>
+        <div class="form-group mb-2">
+          <label for="staticEmail2" name="mesge" ></label>
+          <input type="text" name="messaage" readonly class="form-control-plaintext"  id="enterlabel" value="Enter Vehicle Number:">
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" name="vn" sr-only ></label>
+          <input type="text" name="veh" class="form-control" id="inputVehNum"  placeholder="00 00 00 0000" [(ngModel)]="this.vehiclee" >
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+
+      <td><button type="submit" class="btn btn-success mb-4" id="submitButton" >Submit Number</button></td>
+    </tr>
+
+
+  </table>
+</form>
+
+</body>
+</html>

@@ -12,6 +12,9 @@ import { ExitpointComponent } from './exitpoint/exitpoint.component';
 import { ChoosebuildingComponent } from './choosebuilding/choosebuilding.component';
 import { MatCardModule } from '@angular/material/card';
 import { FinepageComponent } from './finepage/finepage.component';
+import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
+import { PaymentComponent } from './payment/payment.component';
+
 
 
 let routing=RouterModule.forChild([
@@ -36,6 +39,9 @@ let routing=RouterModule.forChild([
         path:'finepoint', component:FinepageComponent
       },
       {
+        path:'vehicledetails', component:VehicleDetailsComponent
+      },
+      {
         path:'**', redirectTo:"home"
       }
     ],
@@ -52,7 +58,9 @@ let routing=RouterModule.forChild([
 
     declarations: [
         EmplooyeeComponent,
-        ChoosebuildingComponent
+        ChoosebuildingComponent,
+        VehicleDetailsComponent,
+        PaymentComponent
 
     ],
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <style>
+    img{
+      height: 200px;
+      width: 200px;
+    }
+    #div1{
+      height: 260px;
+      width: 1000px;
+    }
+    #div2{
+      display: flex;
+      justify-content: space-around;
+      cursor: pointer;
+
+    }
+    #close{
+      background-color: Transparent;
+      border: none;
+      margin-left: 940px;
+    }
+    #close i{
+      height: 40px;
+      width: 40px;
+    }
+  </style>
+</head>
+<body >
+  <div nf>
+  <!-- <button id="close" ><i class="bi bi-x-square-fill"  ></i></button> -->
+  <h1 mat-dialog-title style="margin-left: 380px; color: green;">Choose payment mode:</h1>
+
+  <div id="div1" (click)="payment()">
+
+    <div id="div2" mat-dialog-content *ngIf="data.paymentType=='upi'">
+      <span>
+        <img src="../../../assets/PhonePe.webp" alt="phonepay"  >
+      </span>
+      <span>
+        <img src="../../../assets/gpay.webp" alt="gpay">
+      </span>
+      <span>
+        <img src="../../../assets/paytm.png" alt="paytm">
+      </span>
+      <span>
+        <img src="../../../assets/amazonpay.png" alt="amazonpay">
+      </span>
+    </div>
+
+
+
+
+    <div id="div2" mat-dialog-content *ngIf="data.paymentType=='card'">
+      <span>
+        <img src="../../../assets/sbi2.jpeg" alt="state bank"  >
+      </span>
+      <span>
+        <img src="../../../assets/ICICI CARD.png" alt="icici bank">
+      </span>
+      <span>
+        <img src="../../../assets/HDFCcard.png" alt="hdfc bank">
+      </span>
+      <span>
+        <img src="../../../assets/axis.jpg" alt="axis bank">
+      </span>
+    </div>
+
+
+
+
+
+    <div id="div2" mat-dialog-content *ngIf="data.paymentType=='cash'">
+
+      <span>
+        <img src="../../../assets/cash5.jpg" alt="cash">
+      </span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from "@angular/core";
+import { RepositryService } from "src/app/model/repositry.service";
+import { vehicle } from "src/app/model/vehilcle.model";
+
 
 @Component({
-  selector: 'app-exitpoint',
-  templateUrl: './exitpoint.component.html',
-  styleUrls: ['./exitpoint.component.css']
+selector:'exit',
+templateUrl:'./exitpoint.component.html'
 })
-export class ExitpointComponent implements OnInit {
 
-  constructor() { }
+export class ExitpointComponent{
+  constructor(public repository:RepositryService ){}
 
-  ngOnInit(): void {
+  vehiclee?:string= "";
+  public vehicleDet:vehicle|undefined;
+  totalVehicles:vehicle[]=[];
+  vehNumber:string="";
+
+   get getVehicles()
+  {
+   
+    this.repository.getVehicleDetails(this.vehiclee)
+    return this.totalVehicles;
   }
+
 
 }
