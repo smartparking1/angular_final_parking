@@ -23,12 +23,14 @@ export class EmployeeHomepageComponent implements OnInit {
     if(selectedpoint=='Entry'){
       this.router.navigate(['/employee/employee/entrypoint'], { queryParams: { data: JSON.stringify(this.selectebuilding) } });
     }
-    else if(selectedpoint='visiting'){
+    else if(selectedpoint=='visiting'){
       this.router.navigate(['/employee/employee/finepoint'], { queryParams: { data: JSON.stringify(this.selectebuilding) } });
     }
-    else if(selectedpoint='Exit'){
-      this.router.navigate(['/employee/employee/exitpoint'], { queryParams: { data: JSON.stringify(this.selectebuilding) } });
+    else if(selectedpoint=='Exit'){
+      console.log("okkkkkkkkkkkkkkkkkkkkkkk")
+      this.router.navigate(['/employee/employee/exitpoint']);
     }
   }
+
 
 }

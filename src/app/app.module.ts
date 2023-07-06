@@ -28,7 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 
 
@@ -66,6 +66,7 @@ import { DatePipe } from '@angular/common';
 
    FormsModule,
      MatTableModule,
+     MatDialogModule
 
   ],
   providers: [{

@@ -35,11 +35,20 @@ export class RepositryService implements OnInit {
   public allusers:vehicle[]=[]
   public allEmployees:User[]=[]
 
+  //exit
+  public empId:number|undefined=0;
+  public vehicleDetails= new vehicle();
+  public allVehicles:vehicle[]=[];
+  public vehicleDet:vehicle|undefined=new vehicle();
+
 
   constructor( private restdata: RestDataService,private router:Router) {
+      this.restdata.getAllVehicles().subscribe(v=> {this.allVehicles=v}),
+
       this.restdata.gettingFloors().subscribe((data) => {
           this.listOfFloors=data;
-      })
+      }
+      )
 
       this.restdata.gettingSlots().subscribe((data)=>{
           this.listOfSlots = data;
@@ -75,6 +84,7 @@ employeeLogin(user:Login){
         localStorage.setItem('token',res.jwt)
 
         console.log(res.user.role,'this is the role we are getting')
+        this.empId=res.user.id;
         this.currentUser=res.user
         if(this.currentUser.role=='admin'){
 
@@ -82,7 +92,7 @@ employeeLogin(user:Login){
           this.adminLoginStatus=true
 
         }else if(this.currentUser.role=='employee'){
-          this.router.navigateByUrl('employee/employee/home')
+          this.router.navigateByUrl('employee/employee/choosebuilding')
 
         }
         else{
@@ -283,6 +293,54 @@ updateFineAmount(vehicle:vehicle) {
   this.restdata.updateFineAmount(vehicle).subscribe((data) => {
     console.log(data)
   })
+}
+
+
+
+//for exit
+getVehicleDetails(vehicleNum:any)
+{
+
+
+  this.vehicleDet= this.allVehicles.find(v=>v.vehicle_no==vehicleNum)
+  const user=localStorage.getItem('user')
+if(user!=null){
+  var userid=JSON.parse(user).id
+
+}
+  if(userid!=0)
+  {
+    if(this.vehicleDet)
+    {
+    this.restdata.getVehicleDetails(vehicleNum, userid).subscribe(
+      v=>{Object.assign(this.vehicleDetails,v) });
+
+  if(this.vehicleDetails!=undefined )
+          {
+            // this.restdata.updateSlot()
+            this.router.navigateByUrl("employee/employee/vehicledetails")
+          }
+}
+
+else{
+
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: '"sorry,no vehicle found with this number!!!!!"',
+
+  })
+}
+}
+else{
+  Swal.fire({
+    icon: 'error',
+    text: "please login!!",
+
+  }).then(res=>{
+    this.router.navigateByUrl("/login")
+  })
+}
 }
 
 }

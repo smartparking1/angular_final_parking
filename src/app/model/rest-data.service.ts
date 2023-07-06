@@ -100,4 +100,14 @@ export class RestDataService {
     return this.http.put<vehicle>('http://127.0.0.1:8000/vehicleparking/updatefineamount/',vehicle)
   }
 
+  getVehicleDetails(vehicle_no:string, empId:number|undefined):Observable<vehicle>
+   {
+     return this.http.put<vehicle>(`http://127.0.0.1:8000/vehicleparking/updatevehicleparking/${empId}/${vehicle_no}/`,null);
+   }
+
+   getAllVehicles():Observable<vehicle[]>
+   {
+     return this.http.get<vehicle[]>(`http://127.0.0.1:8000/vehicleparking/getallvehicleparking/`);
+   }
+
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Details</title>
+</head>
+<body>
+  <table class="table table-bordered">
+    <thead>
+
+      <th style="color: green; text-align: center;">Vehicle Details</th>
+      <th colspan="1"></th>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">vehicle Number :</th>
+        <td>{{vehicleDetails.vehicle_no}}</td>
+
+      </tr>
+      <tr>
+        <th scope="row">Slot Number :</th>
+        <td>{{vehicleDetails.slot}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Vehicle Type:</th>
+        <td colspan="2">{{vehicleDetails.vehicle_type}}</td>
+      </tr>
+      <tr>
+       <th scope="row">Entry Time :</th>
+        <td colspan="2">{{vehicleDetails.checkin_time}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Exit Time :</th>
+        <td colspan="2">{{vehicleDetails.checkout_time}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Parking Amount :</th>
+        <td colspan="2">{{vehicleDetails.parking_amount}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Fine Amount :</th>
+        <td colspan="2">{{vehicleDetails.fine_amount}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Total Amount :</th>
+        <td colspan="2">{{vehicleDetails.total_amount}}</td>
+      </tr>
+      <tr>
+        <th scope="row"><button mat-button class="btn btn-success" (click)="openDialog()">Proceed To Payment</button>        </th>
+        <td colspan="2"><button type="button" class="btn btn-warning" routerLink="/employee/employee/exitpoint">Back</button> </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+
+
+</body>
+</html>
