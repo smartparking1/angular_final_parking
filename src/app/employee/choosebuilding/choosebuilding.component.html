@@ -1,17 +1,22 @@
-<div *ngFor="let building of buildings">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>{{ building.building_name }}</mat-card-title>
-      <mat-card-subtitle>{{ building.location }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="building.image_Url" alt="Photo of a building">
-    <mat-card-content>
-      <p>{{ building.description }}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<div class="main">
+  <div class="card-container">
+    <div *ngFor="let building of buildings">
+      <mat-card class="example-card" (click)="selectedBuilding(building)">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img [src]="building.image_url" alt="Building Icon">
+          </div>
+          <div class="building-info">
+            <mat-card-title>{{ building.building_name }}</mat-card-title>
+            <mat-card-subtitle>{{ building.location }}</mat-card-subtitle>
+          </div>
+        </mat-card-header>
+        <img mat-card-image [src]="building.image_url" alt="Photo of a building" width="100px" height="200px"  [class.chekingstatus]=!color(building.status) >
+        <mat-card-content>
+          <p></p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    </div>
 
+</div>

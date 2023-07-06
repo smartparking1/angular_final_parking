@@ -46,20 +46,14 @@ cpassword?:string;
     console.log("entered into register");
     if (this.isValidForm()) {
 
-
-
-<<<<<<< Updated upstream
-    }
-=======
           this.repo.userRegister(this.newUser)
            this.router.navigateByUrl('/login')
             console.log("register successfully ")
         }
 
->>>>>>> Stashed changes
 
 
-    
+
 
     else {
         console.log("invalid form");

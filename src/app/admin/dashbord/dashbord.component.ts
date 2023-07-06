@@ -25,6 +25,17 @@ export class DashbordComponent implements OnInit {
     })
     console.log(this.total_amout,"this is the amout we are getting ")
   }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = this.allcustomers
+  allcustomerslist(){
+    this.allcustomers=this.repo.getallusers()
+    console.log(this.allcustomers)
+    this.allcustomers.forEach( vehicle=>{
+      if(vehicle.total_amount!=null){
+        this.total_amout+=vehicle.total_amount
+      }
+
+    })
+    console.log(this.total_amout,"this is the amout we are getting ")
+    return this.allcustomers
+
+  }
 }

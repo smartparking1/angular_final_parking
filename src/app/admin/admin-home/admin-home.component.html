@@ -1,10 +1,31 @@
 <div class="main">
+  <div class="card-container">
+    <div *ngFor="let building of buildings">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img [src]="building.image_url" alt="Building Icon">
+          </div>
+          <div class="building-info">
+            <mat-card-title>{{ building.building_name }}</mat-card-title>
+            <mat-card-subtitle>{{ building.location }}</mat-card-subtitle>
+          </div>
+        </mat-card-header>
+        <img mat-card-image [src]="building.image_url" alt="Photo of a building" width="100px" height="200px"  [class.chekingstatus]=!color(building.status) >
+        <mat-card-content>
+          <p></p>
+        </mat-card-content>
+        <mat-card-actions>
+          <div *ngIf="building.status === 'active'">
+            <button mat-button (click)="updatebuilding(building.building_id, 'inactive')" [class.btn]=true [class.btn-success]=true>Inactivate</button>
+          </div>
+          <div *ngIf="building.status === 'inactive'">
+            <button mat-button (click)="updatebuilding(building.building_id, 'active')"  [class.btn]=true [class.btn-danger]=true>Activate</button>
+          </div>
 
-
-<h1 > this is the ADMIN page </h1>
-
-
-<button routerLink="/admin/admin/addbuilding" class="btn btn-custom"> add building</button>
-<button routerLink="/admin/admin/floor" class="btn btn-custom"> add Floor</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    </div>
 
 </div>

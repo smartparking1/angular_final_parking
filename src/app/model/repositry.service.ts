@@ -31,11 +31,10 @@ export class RepositryService implements OnInit {
   public listOfFloors:Floor[]=[]
   public listOfSlots:Slots[] = []
   public vehicle?:vehicle
-<<<<<<< Updated upstream
   public employee?:User
-=======
   public allusers:vehicle[]=[]
->>>>>>> Stashed changes
+  public allEmployees:User[]=[]
+
 
   constructor( private restdata: RestDataService,private router:Router) {
       this.restdata.gettingFloors().subscribe((data) => {
@@ -52,9 +51,7 @@ export class RepositryService implements OnInit {
         })
 
    }
-  constructor(private restdata:RestDataService,private router:Router) {
 
-   }
 
   ngOnInit(): void {
 
@@ -68,9 +65,9 @@ export class RepositryService implements OnInit {
 }
 
 
-  employeeLogin(user:Login){
-    console.warn("//pppppppppppppppppppppppppppppppp")
 
+employeeLogin(user:Login){
+    console.warn("//pppppppppppppppppppppppppppppppp")
      this.restdata.employeeLogin(user).subscribe(
       (res)=>{
         this.isLogin=true
@@ -80,7 +77,12 @@ export class RepositryService implements OnInit {
         console.log(res.user.role,'this is the role we are getting')
         this.currentUser=res.user
         if(this.currentUser.role=='admin'){
+
+          this.router.navigateByUrl('admin/admin/home')
           this.adminLoginStatus=true
+
+        }else if(this.currentUser.role=='employee'){
+          this.router.navigateByUrl('employee/employee/home')
 
         }
         else{
@@ -252,13 +254,13 @@ userRegister(user:User){
     return this.allusers
   }
 
-  
+
 
 gettingallEmployees(){
     this.restdata.gettingallEmployees().subscribe(
       (responce)=>{
         console.log(responce)
-        return responce
+        this.allEmployees=responce
       },
       (error)=>{
         Swal.fire({
@@ -267,8 +269,20 @@ gettingallEmployees(){
           text:'ALL Floors add alredy' ,
           footer: 'please enter correct details'
         })
-
       }
     )
+
+    return this.allEmployees
   }
+
+
+
+// * fine page
+
+updateFineAmount(vehicle:vehicle) {
+  this.restdata.updateFineAmount(vehicle).subscribe((data) => {
+    console.log(data)
+  })
+}
+
 }

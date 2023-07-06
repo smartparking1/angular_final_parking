@@ -7,7 +7,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Select Floor</mat-label>
-    <mat-select [(ngModel)]="selectedFloor" (ngModelChange)="onFloorSelectionChange($event)">
+    <mat-select [(ngModel)]="selectedFloor" (ngModelChange)="onFloorSelectionChange($event)" >
       <mat-option *ngFor="let floor of filterFloors" [value]="floor">{{ floor.floor_no }}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -16,7 +16,7 @@
       <button class="slot"
         [ngStyle]="{ 'background-color': slot.status == 'active' ? 'green' : 'red', 'border-color': selectedSlot === slot ? 'blue' : 'black' }"
         (click)="[selectSlot(slot)]">
-        <ng-container *ngIf="!isMarkedd(slot)">S-{{ i+1 }}</ng-container>
+        <ng-container *ngIf="!isMarkedd(slot)">{{slot.slot_name}}</ng-container>
         <span class="right-mark" *ngIf="isMarkedd(slot)">&#10004;</span>
       </button>
     </div>
