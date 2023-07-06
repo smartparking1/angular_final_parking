@@ -71,21 +71,6 @@ export class RestDataService {
     return this.http.post<vehicle>("http://127.0.0.1:8000/vehicleparking/insertvehicleparking/",vehicle);
   }
 
-  // updateSlot(status:any,selectedSlot: any):Observable<Slots> {
-  //   let id=selectedSlot.slot_id
-  //   console.log(selectedSlot+'----------------------')
-  //   console.log(selectedSlot.status)
-  //   if(selectedSlot.status == 'active') {
-  //     selectedSlot.status = 'inactive'
-  //   }else {
-  //     selectedSlot.status = 'active'
-  //   }
-  //   console.log(selectedSlot.status)
-  //   console.log(selectedSlot)
-  //   console.log(id)
-  //   return this.http.put<Slots>(`http://127.0.0.1:8000/building/SlotUpdate/${id}`,selectedSlot)
-  // }
-
   updateSlot(selectedSlot: any):Observable<Slots> {
     let id=selectedSlot.slot_id
     console.log(id)
@@ -111,6 +96,8 @@ export class RestDataService {
     return this.http.get<User[]>('http://127.0.0.1:8000/Employee/GettingAllEmployeeList/')
   }
 
-
+  updateFineAmount(vehicle:vehicle):Observable<vehicle>{
+    return this.http.put<vehicle>('http://127.0.0.1:8000/vehicleparking/updatefineamount/',vehicle)
+  }
 
 }

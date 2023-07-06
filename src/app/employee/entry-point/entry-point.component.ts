@@ -8,6 +8,7 @@ import { Slots } from 'src/app/model/slots.model';
 import { Floor } from 'src/app/model/floor.model';
 import { Building } from 'src/app/model/building.model';
 import { RestDataService } from 'src/app/model/rest-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -34,20 +35,27 @@ export class EntryPointComponent implements OnInit{
   parking_amount?:number
 
   public vehicleType:string="";
+  public selectebuilding:Building=new Building()
 
 
 
-
-  constructor(private repo:RepositryService) {
+  constructor(private repo:RepositryService,private activerout:ActivatedRoute ) {
 
    }
 
    ngOnInit(): void {
+    this.activerout.queryParams.subscribe(params => {
+      const object = JSON.parse(params['data']);
+     this.selectebuilding=object
+     console.log(this.selectebuilding)
+    });
     this.buildings=this.repo.getListOfBuildings();
+    console.log(this.buildings,"okkkkkkkkkkkkkkkkkkkkkkk")
 
   }
 
   onBuildingSelection(selectedBuilding:any) {
+    console.log("0ooooooooooooooooooooooooooooooooooooooo")
     this.gettingFloors();
     this.filterFloors = [];
     this.filterFloors = this.floors.filter((data)=> data.building == this.selectedBuilding?.building_id)
@@ -58,6 +66,15 @@ export class EntryPointComponent implements OnInit{
     this.gettingSlots();
     this.filterSlot = []
     this.filterSlot = this.slotarry.filter(data =>data.floor == this.selectedFloor?.floor_id)
+    var activearry=this.filterSlot.filter(e=>e.status=='active')
+    var inactivearry=this.filterSlot.filter(e=>e.status=='inactive')
+
+
+    console.log(activearry,inactivearry)
+    this.filterSlot=[]
+    this.filterSlot.push(...activearry)
+    this.filterSlot.push(...inactivearry)
+
 
   }
 

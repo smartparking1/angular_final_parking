@@ -9,9 +9,9 @@ import { EmployeeHomepageComponent } from './employee-homepage/employee-homepage
 import { EmplooyeeComponent } from './emplooyee/emplooyee.component';
 import { CommonModule } from '@angular/common';
 import { ExitpointComponent } from './exitpoint/exitpoint.component';
-import { FineComponent } from './fine/fine.component';
 import { ChoosebuildingComponent } from './choosebuilding/choosebuilding.component';
 import { MatCardModule } from '@angular/material/card';
+import { FinepageComponent } from './finepage/finepage.component';
 
 
 let routing=RouterModule.forChild([
@@ -33,6 +33,9 @@ let routing=RouterModule.forChild([
         path:'choosebuilding', component:ChoosebuildingComponent
       },
       {
+        path:'finepoint', component:FinepageComponent
+      },
+      {
         path:'**', redirectTo:"home"
       }
     ],
@@ -45,7 +48,7 @@ let routing=RouterModule.forChild([
 
 @NgModule({
 
-    imports: [routing,FormsModule ,ReactiveFormsModule,MatCardModule],
+    imports: [routing,FormsModule ,ReactiveFormsModule,MatCardModule,CommonModule],
 
     declarations: [
         EmplooyeeComponent,

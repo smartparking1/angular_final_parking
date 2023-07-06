@@ -12,7 +12,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  get EmployeeList(){
+ EmployeeList(){
    return this.repo.gettingallEmployees()
   }
 

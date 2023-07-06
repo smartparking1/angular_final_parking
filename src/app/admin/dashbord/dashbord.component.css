@@ -17,6 +17,11 @@
   border: 2px solid rgb(9, 255, 9);
   color: #fff;
 }
+.total-c{
+  background-color:   rgba(255, 167, 45, 0.53);
+  border: 2px solid rgb(255, 111, 9);
+  color: #fff;
+}
 .main{
   background-color:rgb(31,32,38,0.8);
 

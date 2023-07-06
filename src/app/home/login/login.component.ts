@@ -78,26 +78,6 @@ submitted = false;
       }
     )
 
-
-   setTimeout(() => {
-    if(this.repo.currentUserRole=='admin'){
-      this.router.navigateByUrl('/admin/admin/home')
-      return
-    }
-    else if ((this.repo.currentUserRole=='employee')) {
-      console.log(this.repo.currentUserRole,"............................")
-      alert("ok this is the employee")
-    }
-      else if ((this.repo.currentUserRole == 'employee')) {
-        console.log(this.repo.currentUserRole)
-        // alert("ok this is the employee")
-
-    }
-  else{
-    alert("this is the else part")
-    console.log('not logged in');
-    console.log(this.repo.currentUserRole)
-  } }, 700);
   }
   get f()
   { return this.form.controls; }
