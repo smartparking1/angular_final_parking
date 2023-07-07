@@ -15,3 +15,7 @@ export class vehicle
 
   ){}
 }
+export class Slip{
+  public vehicle_no?:string
+
+}

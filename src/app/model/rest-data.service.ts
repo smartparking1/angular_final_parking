@@ -32,7 +32,7 @@ export class RestDataService {
 
   //* for admin  section oparations
 
-  addBuilding(building:Building):Observable<Building>{
+  addBuilding(building:any):Observable<Building>{
     return this.http.post<Building>("http://127.0.0.1:8000/building/addingbuilding/",building)
   }
 
@@ -88,9 +88,9 @@ export class RestDataService {
 
       return  this.http.post<Floor>('http://127.0.0.1:8000/building/addingFloorAndGetAllFloors/',floor)
   }
-  getallusers():Observable<vehicle[]>{
-    return this.http.get<vehicle[]>('http://127.0.0.1:8000/vehicleparking/getallvehicleparking/')
-  }
+  // getallusers():Observable<vehicle[]>{
+  //   return this.http.get<vehicle[]>('http://127.0.0.1:8000/vehicleparking/getallvehicleparking/')
+  // }
 
   gettingallEmployees():Observable<User[]>{
     return this.http.get<User[]>('http://127.0.0.1:8000/Employee/GettingAllEmployeeList/')
@@ -108,6 +108,12 @@ export class RestDataService {
    getAllVehicles():Observable<vehicle[]>
    {
      return this.http.get<vehicle[]>(`http://127.0.0.1:8000/vehicleparking/getallvehicleparking/`);
+   }
+   getSlip(vehicle_no:any):Observable<any>{
+
+
+    return this.http.post<any>('http://127.0.0.1:8000/pdf/',vehicle_no)
+
    }
 
 }

@@ -4,47 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payment</title>
-  <style>
-    img{
-      height: 200px;
-      width: 200px;
-    }
-    #div1{
-      height: 220px;
-      width: 800px;
-    }
-    #div2{
-      display: flex;
-      justify-content: space-around;
-      cursor: pointer;
-    }
-    #close{
-      background-color: Transparent;
-      border: none;
-      margin-left: 800px;
-    }
-    #close i{
-      height: 40px;
-      width: 40px;
-    }
-  </style>
+
 </head>
 <body >
   <div nf>
   <button id="close" ><i class="bi bi-x-square-fill" (click)="closeDialog()"></i></button>
-  <h1 mat-dialog-title style="margin-left: 280px; color: green;">Choose payment type:</h1>
+  <h1 mat-dialog-title style="margin-left: 200px; color: green;">Choose payment type:</h1>
 
   <div id="div1">
 
     <div id="div2" mat-dialog-content>
       <span>
-        <img src="../../../assets/UPI_logo_PNG.jpg" alt="upi"  (click)="openDialog('upi')">
+        <img src="../../../assets/operation.png" alt="upi"  (click)="openDialog('upi')" width="50%">
       </span>
       <span>
-        <img src="../../../assets/png-transparent-credit-card-bank-credit-card.png" alt="card" (click)="openDialog('card')">
+        <img src="../../../assets/debit-card.png" alt="card" (click)="openDialog('card')">
       </span>
       <span>
-        <img src="../../../assets/money-logo-png.jpg" alt="cash" (click)="openDialog('cash')">
+        <img src="../../../assets/cash-payment.png" alt="cash" (click)="openDialog('cash')">
       </span>
     </div>
   </div>

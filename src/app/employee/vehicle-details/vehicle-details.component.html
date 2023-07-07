@@ -46,15 +46,17 @@
         <th scope="row">Total Amount :</th>
         <td colspan="2">{{vehicleDetails.total_amount}}</td>
       </tr>
-      <tr>
-        <th scope="row"><button mat-button class="btn btn-success" (click)="openDialog()">Proceed To Payment</button>        </th>
-        <td colspan="2"><button type="button" class="btn btn-warning" routerLink="/employee/employee/exitpoint">Back</button> </td>
-      </tr>
+
+
     </tbody>
 
   </table>
+ <div class="buttons">
+  <button mat-button class="btn btn-success" (click)="[openDialog(),updateSlot(vehicleDetails.slot)]" >Proceed To Payment</button>     &nbsp;&nbsp;
+  <button type="button" class="btn btn-warning" routerLink="/employee/employee/exitpoint">Back</button>
 
 
+ </div>
 
 </body>
 </html>

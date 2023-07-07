@@ -65,7 +65,7 @@ updatebuilding(id: any,status:any) {
       console.log(formData)
       // Send the request with the updated form data
       // console.log(building);
-      return this.http.patch<Building>(`http://127.0.0.1:8000/building/UpdateBuildingAndDeleteBuildingGettingParticularBuilding/${id}/`, formData).subscribe(d=>console.log(d));
+      return this.http.put<Building>(`http://127.0.0.1:8000/building/UpdateBuildingAndDeleteBuildingGettingParticularBuilding/${id}/`, formData).subscribe(d=>console.log(d));
     });
     console.log(this.building)
     //this.repo.updatebuilding(this.building)

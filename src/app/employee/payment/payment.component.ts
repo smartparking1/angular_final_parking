@@ -1,6 +1,7 @@
 import { Component,Inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+import { RepositryService } from "src/app/model/repositry.service";
 import Swal from "sweetalert2";
 
 export interface DialogData {
@@ -11,6 +12,7 @@ export interface DialogData {
 @Component({
   selector: 'dialog-data-example-dialog',
   templateUrl: './payment.component.html',
+  styleUrls:['./payment.component.css']
 })
 export class PaymentComponent {
   active:boolean=true;
@@ -36,10 +38,11 @@ export class PaymentComponent {
 @Component({
   selector: 'dialog-data-example-dialog',
   templateUrl: './paymentMode.component.html',
+
 })
 export class PaymentModeDialog {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public router:Router,public dialog:MatDialog) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public router:Router,public dialog:MatDialog,private repo:RepositryService) {
     console.log(data)
   }
 
@@ -55,11 +58,17 @@ export class PaymentModeDialog {
   confirmButtonText: 'Yes, continue!'
   }).then((result) => {
   if (result.isConfirmed) {
+    this.repo.getSlip()
+
     Swal.fire(
       'Payment Succesful!',
       '',
       'success'
     ).then((result)=>{
+
+
+
+
       this.dialog.closeAll();
       this.router.navigateByUrl("/employee/employee/exitpoint")
     })

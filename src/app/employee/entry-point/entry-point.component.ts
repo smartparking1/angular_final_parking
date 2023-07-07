@@ -1,10 +1,10 @@
+import { Slots } from './../../model/slots.model';
 import { Component, OnInit} from '@angular/core';
 
 
 import Swal from 'sweetalert2';
 import { RepositryService } from 'src/app/model/repositry.service';
 import { vehicle } from 'src/app/model/vehilcle.model';
-import { Slots } from 'src/app/model/slots.model';
 import { Floor } from 'src/app/model/floor.model';
 import { Building } from 'src/app/model/building.model';
 import { RestDataService } from 'src/app/model/rest-data.service';
@@ -115,13 +115,14 @@ const formattedDate = currentDate.toLocaleTimeString() // Convert to time string
  this.parkingDetails.slot = this.selectedSlot.slot_id;
  this.parkingDetails.checkin_by = id_of_employee;
   this.repo.saveParking(this.parkingDetails);
-  // this.selectedSlot.status="inactive";
-  // this.repo.updateSlot(this.selectedSlot)
+
+  
   }
 
   updateSlot(selectedSlot:Slots){
     console.log(selectedSlot)
-    this.repo.updateSlot(selectedSlot)
+    this.repo.selectedSlot=selectedSlot
+    // this.repo.updateSlot(selectedSlot)
   }
 
   getbuildings(){
@@ -136,5 +137,12 @@ const formattedDate = currentDate.toLocaleTimeString() // Convert to time string
   gettingSlots() {
     this.slotarry = this.repo.gettingSlots();
   }
+
+  slotName(slot:any){
+
+    return slot.slot_name?.substring(0,1)+' ' +slot.slot_name?.substr(-3)
+
+  }
+
 
 }

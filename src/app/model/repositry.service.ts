@@ -1,3 +1,4 @@
+import { saveAs } from 'file-saver';
 import { EventEmitter, Injectable } from '@angular/core';
 import {  OnInit } from '@angular/core';
 import { Login } from './Register.model';
@@ -10,10 +11,9 @@ import Swal from 'sweetalert2'
 import { User } from './user.model';
 import { Building } from './building.model';
 import { Floor } from './floor.model';
-import { vehicle } from './vehilcle.model';
+import { Slip, vehicle } from './vehilcle.model';
 import { Observable } from 'rxjs';
 import { Slots } from './slots.model';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -34,6 +34,7 @@ export class RepositryService implements OnInit {
   public employee?:User
   public allusers:vehicle[]=[]
   public allEmployees:User[]=[]
+  public selectedSlot:Slots=new Slots()
 
   //exit
   public empId:number|undefined=0;
@@ -142,7 +143,7 @@ userRegister(user:User){
 
   //* for adding building
 
-  addBuilding(buildng:Building){
+  addBuilding(buildng:any){
 
     this.restdata.addBuilding(buildng).subscribe(
       (res)=>{
@@ -213,7 +214,17 @@ userRegister(user:User){
   addFloor(floor:any){
     console.log()
     return this.restdata.addFloor(floor).subscribe(data => {
-      // this.listOfFloors.push(data)
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Floor Added Successfully.',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      this.router.navigateByUrl('/admin/amdin/floor')
+
+
+
       console.log(data)
     },(error)=>{
 
@@ -221,7 +232,7 @@ userRegister(user:User){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text:'ALL Floors add alredy' ,
+        text:error.error.error,
         footer: 'please enter correct details'
       })
     })
@@ -241,7 +252,26 @@ userRegister(user:User){
 
     this.restdata.saveParking(vehicle).subscribe((data: vehicle)=>{
         this.vehicle=data;
-      });
+       this.updateSlot(this.selectedSlot)
+       Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Slot alloceted successfully.',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      },
+      (error)=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text:'Vehicle alredy in (please check the vehicle number)' ,
+          footer: 'please enter correct details'
+        })
+
+      }
+      );
 
   }
 
@@ -256,12 +286,8 @@ userRegister(user:User){
 
 
   getallusers(){
-    this.restdata.getallusers().subscribe(
-      (responce:any)=>{
-        this.allusers=responce
-      }
-    )
-    return this.allusers
+
+    return this.allVehicles
   }
 
 
@@ -279,7 +305,7 @@ gettingallEmployees(){
           text:'ALL Floors add alredy' ,
           footer: 'please enter correct details'
         })
-      }
+      } 
     )
 
     return this.allEmployees
@@ -300,8 +326,6 @@ updateFineAmount(vehicle:vehicle) {
 //for exit
 getVehicleDetails(vehicleNum:any)
 {
-
-
   this.vehicleDet= this.allVehicles.find(v=>v.vehicle_no==vehicleNum)
   const user=localStorage.getItem('user')
 if(user!=null){
@@ -313,11 +337,22 @@ if(user!=null){
     if(this.vehicleDet)
     {
     this.restdata.getVehicleDetails(vehicleNum, userid).subscribe(
-      v=>{Object.assign(this.vehicleDetails,v) });
+      v=>{Object.assign(this.vehicleDetails,v) },
+      (error)=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error,
 
-  if(this.vehicleDetails!=undefined )
+        })
+        this.router.navigateByUrl('/employee/employee/exitpoint')
+
+      }
+
+      );
+
+   if(this.vehicleDetails!=undefined )
           {
-            // this.restdata.updateSlot()
             this.router.navigateByUrl("employee/employee/vehicledetails")
           }
 }
@@ -343,4 +378,28 @@ else{
 }
 }
 
+
+building=new Building();
+  selectbuilding(build:Building){
+    this.building=build;
+  }
+  getbuilding(){
+    console.log(" in repo ")
+    console.log(this.building)
+    return this.building
+  }
+
+
+  getSlip(){
+
+    var vehicleNo=new Slip()
+    vehicleNo.vehicle_no=this.vehicleDetails.vehicle_no
+    console.log(vehicleNo)
+    this.restdata.getSlip(vehicleNo).subscribe(
+      (response:Blob)=>{
+        console.log(response)
+        saveAs(response,"SMP_payslip"+".pdf")
+      }
+    )
+  }
 }

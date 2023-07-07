@@ -13,7 +13,7 @@ import { ChoosebuildingComponent } from './choosebuilding/choosebuilding.compone
 import { MatCardModule } from '@angular/material/card';
 import { FinepageComponent } from './finepage/finepage.component';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
-import { PaymentComponent } from './payment/payment.component';
+import { PaymentComponent, PaymentModeDialog } from './payment/payment.component';
 
 
 
@@ -60,7 +60,8 @@ let routing=RouterModule.forChild([
         EmplooyeeComponent,
         ChoosebuildingComponent,
         VehicleDetailsComponent,
-        PaymentComponent
+        PaymentComponent,
+        PaymentModeDialog
 
     ],
 

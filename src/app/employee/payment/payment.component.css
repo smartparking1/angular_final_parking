@@ -1,0 +1,22 @@
+img{
+  height: 150px;
+  width: 150px;
+}
+#div1{
+  height: 220px;
+  width: 800px;
+}
+#div2{
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+#close{
+  background-color: Transparent;
+  border: none;
+  margin-left: 800px;
+}
+#close i{
+  height: 40px;
+  width: 40px;
+}

@@ -10,31 +10,24 @@ import { DatePipe } from '@angular/common';
 export class DashbordComponent implements OnInit {
 
   allcustomers:vehicle[]=[]
+  totalVehicles:number=0
   total_amout:number=0
   constructor(private repo:RepositryService) { }
 
   ngOnInit(): void {
 
-    this.allcustomers=this.repo.getallusers()
-    console.log(this.allcustomers)
-    this.allcustomers.forEach( vehicle=>{
-      if(vehicle.total_amount!=null){
-        this.total_amout+=vehicle.total_amount
-      }
-
-    })
-    console.log(this.total_amout,"this is the amout we are getting ")
   }
   allcustomerslist(){
     this.allcustomers=this.repo.getallusers()
-    console.log(this.allcustomers)
-    this.allcustomers.forEach( vehicle=>{
-      if(vehicle.total_amount!=null){
-        this.total_amout+=vehicle.total_amount
+    this.totalVehicles=(this.allcustomers.length)+1
+    this.total_amout=0
+    this.allcustomers.forEach(
+      (vehicle)=>{
+        if(vehicle.total_amount!=undefined){
+          this.total_amout+=vehicle.total_amount
+        }
       }
-
-    })
-    console.log(this.total_amout,"this is the amout we are getting ")
+    )
     return this.allcustomers
 
   }

@@ -61,12 +61,13 @@ public building:Building=new Building()
 
     if (this.selectedFile) {
       formData.append('images', this.selectedFile);
+      this.repo.addBuilding(formData)
 
       console.log('FormData:', formData);
-      this.http.post<Building>('http://127.0.0.1:8000/building/addingbuilding/', formData).subscribe((response) => {
-       console.log('image added');
-       console.log(response)
-      });
+      // this.http.post<Building>('http://127.0.0.1:8000/building/addingbuilding/', formData).subscribe((response) => {
+      //  console.log('image added');
+      //  console.log(response)
+      // });
     }
   }
 

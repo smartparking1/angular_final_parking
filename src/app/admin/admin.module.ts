@@ -24,6 +24,7 @@ import {MatListModule} from '@angular/material/list';
 import { FloorComponent } from './floor/floor.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { SettingsComponent } from './settings/settings.component';
+import { PricesComponent } from './prices/prices.component';
 
 let routing=RouterModule.forChild([
   {
@@ -44,6 +45,9 @@ let routing=RouterModule.forChild([
       },
       {
         path:'settings',component:SettingsComponent
+      },
+      {
+        path:'prices',component:PricesComponent
       },
       {
         path:'**', redirectTo:"home"
@@ -71,7 +75,7 @@ let routing=RouterModule.forChild([
 
       ],
 
-  declarations: [AdminComponent, FloorComponent, SettingsComponent],
+  declarations: [AdminComponent, FloorComponent, SettingsComponent, PricesComponent],
 
 })
 export class AdminModule { }

@@ -13,7 +13,7 @@
       <div class="card total-c">
         <div class="card-body">
           <h5 class="card-title">total vehicals</h5>
-          <p class="card-text">{{total_amout}}</p>
+          <p class="card-text">{{totalVehicles}}</p>
 
         </div>
       </div>
@@ -21,7 +21,7 @@
     <div class="col-sm-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
+          <h5 class="card-title">Profit</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         </div>
       </div>
@@ -44,8 +44,8 @@
       </tr>
     </thead>
     <tbody>
-     <tr *ngFor="let customer of allcustomers">
-      <td>{{customer}}</td>
+     <tr *ngFor="let customer of allcustomerslist();index as i">
+      <td>{{i+1}}</td>
       <td>{{customer.vehicle_no}}</td>
       <td>{{customer.vehicle_type}}</td>
       <td>{{customer.checkin_time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
