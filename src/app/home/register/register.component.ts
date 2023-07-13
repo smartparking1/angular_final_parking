@@ -25,7 +25,7 @@ cpassword?:string;
 
 
   ngOnInit(): void {
-    this.newUser.location="banglore";
+    this.newUser.location="";
   }
   constructor(private repo:RepositryService,private router:Router, private http:HttpClient, private repositoryService:RepositryService ) { }
    newUser: User= new User();
@@ -35,7 +35,7 @@ cpassword?:string;
     return this.newUser.employee_name && this.newUser.email_id &&
      this.newUser.password &&
      this.cpassword &&
-      this.newUser.mobile_number && this.newUser.role && this.newUser.location;
+      this.newUser.mobile_number && this.newUser.location;
   }
 
 
@@ -45,6 +45,7 @@ cpassword?:string;
 
     console.log("entered into register");
     if (this.isValidForm()) {
+      this.newUser.role='employee'
 
           this.repo.userRegister(this.newUser)
            this.router.navigateByUrl('/login')

@@ -45,5 +45,5 @@
   filter: grayscale(1);
 }
 .main{
-  height:fit-content;
+  height:99vh;
 }

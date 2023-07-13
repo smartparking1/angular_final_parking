@@ -1,3 +1,4 @@
+import { Slottype } from './../../model/floor.model';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Floor } from 'src/app/model/floor.model';
@@ -24,6 +25,8 @@ export class FloorComponent implements OnInit {
   selectedbuilding?:string;
   selectedlocation?:string;
   size?:number
+  floor_slots=new Slottype();
+
 
   constructor(private http:HttpClient,private service:RepositryService, public restdata:RestDataService) {
      this.service.getListOfBuildings();
@@ -60,6 +63,8 @@ export class FloorComponent implements OnInit {
   }
   addFloor(form:NgForm){
     console.log(form.value)
+    form.value.floor_slots=this.floor_slots
+
     this.service.addFloor(form.value)
   }
   onClickBuilding() {

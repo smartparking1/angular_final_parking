@@ -20,9 +20,10 @@ export class TokenInterceptor implements HttpInterceptor {
     const idToken = localStorage.getItem("token");
     console.log(idToken)
     if (idToken) {
-        request = request.clone({headers: request.headers.set("Authorization","Bearer " + idToken)
-
-        });
+        request = request.clone(
+          {headers: request.headers.set("Authorization","Bearer " + idToken)
+        }
+        );
 
         return next.handle(request);
     }

@@ -1,3 +1,4 @@
+import { Building } from './../../model/building.model';
 import { Slots } from './../../model/slots.model';
 import { Component, OnInit} from '@angular/core';
 
@@ -6,7 +7,6 @@ import Swal from 'sweetalert2';
 import { RepositryService } from 'src/app/model/repositry.service';
 import { vehicle } from 'src/app/model/vehilcle.model';
 import { Floor } from 'src/app/model/floor.model';
-import { Building } from 'src/app/model/building.model';
 import { RestDataService } from 'src/app/model/rest-data.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -32,10 +32,11 @@ export class EntryPointComponent implements OnInit{
   filterFloors : Floor[] = [];
   slotarry: Slots[] =[]
   filterSlot : Slots[] = []
+  final_filterSlots:Slots[]=[]
   parking_amount?:number
 
   public vehicleType:string="";
-  public selectebuilding:Building=new Building()
+  public currentBuilding:Building=new Building()
 
 
 
@@ -44,24 +45,34 @@ export class EntryPointComponent implements OnInit{
    }
 
    ngOnInit(): void {
+
+
     this.activerout.queryParams.subscribe(params => {
       const object = JSON.parse(params['data']);
-     this.selectebuilding=object
-     console.log(this.selectebuilding)
+     this.currentBuilding=object
+     console.log(this.currentBuilding)
+
     });
-    this.buildings=this.repo.getListOfBuildings();
-    console.log(this.buildings,"okkkkkkkkkkkkkkkkkkkkkkk")
+    this.gettingFloors();
+    this.filterFloors = [];
+    this.filterFloors = this.floors.filter((data)=> data.building ==this.currentBuilding.building_id)
+    console.log(this.filterFloors)
+
+    // this.buildings=this.repo.getListOfBuildings();
+    // console.log(this.buildings,"okkkkkkkkkkkkkkkkkkkkkkk")
+
 
   }
 
   onBuildingSelection(selectedBuilding:any) {
     console.log("0ooooooooooooooooooooooooooooooooooooooo")
-    this.gettingFloors();
+
     this.filterFloors = [];
-    this.filterFloors = this.floors.filter((data)=> data.building == this.selectedBuilding?.building_id)
+    this.filterFloors = this.floors.filter((data)=> data.building ==this.currentBuilding.building_id)
   }
 
   onFloorSelectionChange(selectedFloor: any) {
+
     console.log(this.selectedFloor)
     this.gettingSlots();
     this.filterSlot = []
@@ -74,6 +85,7 @@ export class EntryPointComponent implements OnInit{
     this.filterSlot=[]
     this.filterSlot.push(...activearry)
     this.filterSlot.push(...inactivearry)
+    this.final_filterSlots=[]
 
 
   }
@@ -116,7 +128,7 @@ const formattedDate = currentDate.toLocaleTimeString() // Convert to time string
  this.parkingDetails.checkin_by = id_of_employee;
   this.repo.saveParking(this.parkingDetails);
 
-  
+
   }
 
   updateSlot(selectedSlot:Slots){
@@ -141,6 +153,22 @@ const formattedDate = currentDate.toLocaleTimeString() // Convert to time string
   slotName(slot:any){
 
     return slot.slot_name?.substring(0,1)+' ' +slot.slot_name?.substr(-3)
+
+  }
+  selectedType(type:String){
+  if(type=='car'){
+    this.final_filterSlots=this.filterSlot.filter(e=>e.slot_type=='four_wheeler')
+    console.log('carrrrrrrrrrrrrr')
+    console.log(this.final_filterSlots)
+    this.vehicleType='four_wheeler'
+  }
+  else if(type=='bike'){
+    console.log('bikeeeeeeeeeeeeeeeeeeeee')
+    this.final_filterSlots=this.filterSlot.filter(e=>e.slot_type=='two_wheeler')
+    this.vehicleType='two_wheeler'
+    console.log(this.final_filterSlots)
+  }
+
 
   }
 

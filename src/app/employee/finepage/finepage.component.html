@@ -1,6 +1,7 @@
 <body>
   <mat-card>
-      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm" >
+        <h2> Fine Page</h2>
         <mat-form-field>
           <input matInput placeholder="Enter vehicle number" [(ngModel)]="vehicle.vehicle_no" name="vehicle_no" required>
           <mat-error *ngIf="isInput1Empty()">Vehicle number is required</mat-error>
@@ -11,7 +12,7 @@
         </mat-form-field>
         <div>
         <button mat-raised-button color="primary" type="submit"  class="custom-button">Submit</button>
-        <button mat-raised-button color="warn" type="button" (click)="resetForm(form)" class="custom-button">Reset</button>
+        <button mat-raised-button color="warn" type="button" (click)="resetForm(form)" class="custom-button rest">Reset</button>
       </div>
       </form>
     </mat-card>

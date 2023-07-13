@@ -12,6 +12,8 @@ import { Slots } from './slots.model';
 
 
 import { Form } from '@angular/forms';
+import { Price } from './price.model';
+import { emit } from 'process';
 @Injectable({
   providedIn: 'root'
 })
@@ -115,5 +117,17 @@ export class RestDataService {
     return this.http.post<any>('http://127.0.0.1:8000/pdf/',vehicle_no)
 
    }
-
+   addPrice(price:Price):Observable<Price>{
+    console.log(price)
+    return this.http.post<Price>('http://127.0.0.1:8000/vehicleparking/PriceInsert/',price)
+   }
+   changeRole(email:string):Observable<any>{
+    var data={
+     email:email
+    }
+    return this.http.post<any>('http://127.0.0.1:8000/Employee/EmployeeRoleUpadate/',data)
+   }
+   deleteEmployee(email:string):Observable<any>{
+    return this.http.delete<any>('http://127.0.0.1:8000/Employee/DeletingEmployees/8/')
+   }
 }

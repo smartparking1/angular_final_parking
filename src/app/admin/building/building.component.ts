@@ -11,13 +11,14 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./building.component.css']
 })
 export class BuildingComponent implements OnInit {
-public building:Building=new Building()
+  public building: Building = new Building()
   selectedFile: File | undefined;
   submitted = false;
   form!: FormGroup;
-   statusError:boolean=false;
-   selectedstatus?:string
-  constructor(private repo: RepositryService, private formBuilder: FormBuilder,private http:HttpClient) { }
+  statusError: boolean = false;
+  selectedstatus?: string
+  imageUrl: string = ''
+  constructor(private repo: RepositryService, private formBuilder: FormBuilder, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -28,23 +29,23 @@ public building:Building=new Building()
     });
   }
   saveLogin() {
-    this.submitted=true;
+    this.submitted = true;
     console.log(this.building);
     console.log("inside save method")
 
-    if (this.isValidForm()){
-   if(this.selectedstatus){
-    this.statusError=false
-   }
+    if (this.isValidForm()) {
+      if (this.selectedstatus) {
+        this.statusError = false
+      }
       console.log(" formmm")
       this.repo.addBuilding(this.building);
       console.log("valid form")
     }
-    else{
+    else {
       console.log("invalid form");
-        // if (!this.selectedstatus) {
-          this.statusError = true;
-        // }
+      // if (!this.selectedstatus) {
+      this.statusError = true;
+      // }
     }
     console.log(this.building.building_name);
     const formData = new FormData();
@@ -72,12 +73,19 @@ public building:Building=new Building()
   }
 
 
-      onFileSelected(event: any) {
-        this.selectedFile = event.target.files[0];
-      }
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageUrl = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
 
   isValidForm() {
-   return (this.building.building_name &&
+    return (this.building.building_name &&
       this.building.location &&
       this.building.no_of_floors &&
       this.building.status);

@@ -13,14 +13,18 @@
   flex-wrap: wrap;
   overflow: auto;
   box-sizing: initial;
+  float: left;
+  margin-right: 30px;
 
 }
 .slot{
   margin-left: 15px;
   margin-top: 10px;
-  background-color: #4fff00;
+  background-color: #4fff4f;
   height: 50px;
   width: 50px;
+  border-radius: 10px;
+  border: none;
 }
 .carNo{
   margin: 20px;
@@ -33,4 +37,16 @@ mat-form-field{
 .main{
   color:black;
   background-color: #ffffff7b;
+}
+.info{
+
+  padding-bottom: -20px;
+  margin: 20px;
+}
+.types{
+  display: inline-block;
+}
+.types>span{
+  height: 50px;
+  margin: 30px;
 }

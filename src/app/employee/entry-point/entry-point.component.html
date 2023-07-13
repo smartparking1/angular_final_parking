@@ -1,29 +1,40 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-DfXdInb5qACyI0+ivHs5+ZIc+6uz/0DIu3Y4DMe1s5n1+BViz+/Xcux4kz2/mIg9" crossorigin="anonymous">
+
 <div class="main">
   <div class="gridbox" >
     <mat-form-field>
-      <br>
-      <mat-label>Select Building</mat-label>
-      <mat-select [(ngModel)]="selectedBuilding" (ngModelChange)="onBuildingSelection($event)">
-        <mat-option *ngFor="let building of buildings" [value]="building">{{ building.building_name }}-{{building.location}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <br>  
+      <br><br>
       <mat-label>Select Floor</mat-label>
       <mat-select [(ngModel)]="selectedFloor" (ngModelChange)="onFloorSelectionChange($event)" >
         <mat-option *ngFor="let floor of filterFloors" [value]="floor">{{ floor.floor_no }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <div class="slots">
-      <div *ngFor="let slot of filterSlot;let i = index">
+    <div class="types">
+      <br>
+      <br>
+      <span> <img src="../.././../assets/sedan-car-front.png" width="50px" height="50px" alt="" (click)="selectedType('car')"></span>
+      <span> <img src="../.././../assets/motorcycle.png" width="50px" height="50px" alt=""(click)="selectedType('bike')"></span>
+      <span></span>
+    </div>
+
+
+    <div></div>
+
+    <div class="slots" >
+      <div *ngFor="let slot of final_filterSlots;let i = index">
         <button class="slot"
-          [ngStyle]="{ 'background-color': slot.status == 'active' ? '#12ff12' : 'red', 'border-color': selectedSlot === slot ? 'blue' : 'black' }"
+          [ngStyle]="{ 'background-color': slot.status == 'active' ? '#4fff4f' : '#ff7575', 'border': selectedSlot === slot ? '2px solid red' : 'none','color':slot.slot_type=='two_wheeler'?'red':'black' }"
           (click)="[selectSlot(slot)]">
           <ng-container *ngIf="!isMarkedd(slot)" >{{slotName(slot)}}</ng-container>
-          <span class="right-mark" *ngIf="isMarkedd(slot)">&#10004;</span>
+          <span class="right-mark" *ngIf="isMarkedd(slot)" style="color: red;">&#10004;</span>
         </button>
       </div>
+
+    </div>
+    <div>
+      <button class="slot"></button> <span class="info">Available</span>
+      <button class="slot" style="background-color: #ff7575;"></button><span class="info">Unavilable</span>
     </div>
     <div class="carNo">
       <label for="fname" style="font-size: medium;">Vehicle No No:</label>
@@ -31,17 +42,17 @@
         <input type="text" matInput [(ngModel)]="carNumber" placeholder="00 00 00 0000">
       </mat-form-field>
       &nbsp;  &nbsp;
-      <label for="fname" style="font-size: medium;">Vehilce type:</label>
+      <!-- <label for="fname" style="font-size: medium;">Vehilce type:</label> -->
 
-      <mat-form-field>
+      <!-- <mat-form-field>
         <mat-label>Select Vehicle Type</mat-label>
         <mat-select matInput [(ngModel)]="vehicleType">
           <mat-option value="two_wheeler">Two Wheeler</mat-option>
-          <mat-option value="four_wheeler">Four Wheeler</mat-option>
+          <mat-option value="four_wheeler"><i class="fa-regular fa-car-side"></i>Four Wheeler</mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
     </div>
-    <button (click)="[save(),updateSlot(selectedSlot)]" class="btn btn-primary btn-sm addButton">Submit</button>
+    <button (click)="[save(),updateSlot(selectedSlot)]" class="btn  btn-sm addButton" style="background-color: #ff4b00;color: #fff;">Submit</button>
     </div>
 
 </div>

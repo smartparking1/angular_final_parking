@@ -25,6 +25,7 @@ import { FloorComponent } from './floor/floor.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PricesComponent } from './prices/prices.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 let routing=RouterModule.forChild([
   {
@@ -71,11 +72,11 @@ let routing=RouterModule.forChild([
       MatSelectModule,
       MatButtonModule,
       CommonModule,
-      MatListModule
-
+      MatListModule,
+      MatSlideToggleModule
       ],
 
-  declarations: [AdminComponent, FloorComponent, SettingsComponent, PricesComponent],
+  declarations: [AdminComponent, FloorComponent, SettingsComponent, PricesComponent,],
 
 })
 export class AdminModule { }

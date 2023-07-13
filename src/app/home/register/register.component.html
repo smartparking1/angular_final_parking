@@ -155,34 +155,6 @@
               </div>
             </div>
           </div>
-
-          <div class="radio-buttons">
-            <label>Select your Role:</label>
-            <input
-              type="radio"
-              id="agent"
-              name="role"
-              value="agent"
-              [(ngModel)]="newUser.role"
-              (ngModelChange)="roleError = false"
-            />
-            <label for="agent">Agent</label>
-
-            <input
-              type="radio"
-              id="employee"
-              name="role"
-              value="employee"
-              [(ngModel)]="newUser.role"
-              (ngModelChange)="roleError = false"
-            />
-            <label for="employee">Employee</label>
-
-            <div *ngIf="roleError" class="error-message">
-              Please select a role.
-            </div>
-          </div>
-
           <button type="submit" class="btn btn-primary btn-block login-btn">
             Register
           </button>

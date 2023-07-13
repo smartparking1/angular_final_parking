@@ -4,5 +4,6 @@ export class Slots{
     public slot_name?:string,
     public status?:string,
     public floor?:number,
+    public slot_type?:string,
   ){}
 }

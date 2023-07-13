@@ -3,10 +3,15 @@ export class Floor
 {
   public floor_id?:number
   public floor_no?:string
-  public no_of_slots?:number
+  public floor_slots?:Slottype
   public status?:string
   public building?:Building
   public location?:string
 
 
+}
+
+export class Slottype{
+  public two_wheeler?:number
+  public four_wheeler?:number
 }
