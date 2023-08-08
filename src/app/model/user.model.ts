@@ -8,6 +8,7 @@ export class User{
   password?:string;
   // cpassword?:string;
   location?:string;
+  image?:string;
 
 
 }

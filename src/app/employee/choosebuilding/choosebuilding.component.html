@@ -4,14 +4,14 @@
       <mat-card class="example-card" (click)="selectedBuilding(building)">
         <mat-card-header>
           <div mat-card-avatar>
-            <img [src]="building.image_url" alt="Building Icon">
+            <img [src]="getImageSource(building.image)" alt="Building Icon">
           </div>
           <div class="building-info">
             <mat-card-title>{{ building.building_name }}</mat-card-title>
             <mat-card-subtitle>{{ building.location }}</mat-card-subtitle>
           </div>
         </mat-card-header>
-        <img mat-card-image [src]="building.image_url" alt="Photo of a building" width="100px" height="200px"  [class.chekingstatus]=!color(building.status) >
+        <img mat-card-image [src]="getImageSource(building.image)"alt="Photo of a building" width="100px" height="200px"  [class.chekingstatus]=!color(building.status) >
         <mat-card-content>
           <p></p>
         </mat-card-content>

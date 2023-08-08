@@ -15,6 +15,7 @@ export class AdminComponent  {
   isSideNavOpened:boolean=false
   constructor() { }
   toggleSideNav() {
+    
     this.isSideNavOpened = !this.isSideNavOpened;
   }
 

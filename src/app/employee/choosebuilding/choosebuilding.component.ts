@@ -44,7 +44,7 @@ updatebuilding(id: any,status:any) {
     })
 
     console.log(this.building.building_id);
-    console.log(this.building.image_url);
+    console.log(this.building.image);
 
     const formData = new FormData();
 
@@ -57,7 +57,7 @@ updatebuilding(id: any,status:any) {
     }
 
     // Fetch the file data from the URL
-    this.http.get(this.building.image_url, { responseType: 'blob' }).subscribe((blob) => {
+    this.http.get(this.building.image, { responseType: 'blob' }).subscribe((blob) => {
       const file = new File([blob], 'img.jpg');
       console.log(blob)
       console.log(file)
@@ -74,8 +74,12 @@ updatebuilding(id: any,status:any) {
 }
 selectedBuilding(building:Building){
   console.log(building)
+  building.image=''
   this.router.navigateByUrl('/employee/employee/home')
   this.router.navigate(['/employee/employee/home'], { queryParams: { data: JSON.stringify(building) } });
+}
+getImageSource(imageData: string): string {
+  return 'data:image/jpeg;base64,' + imageData;
 }
 
 }

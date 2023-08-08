@@ -28,7 +28,10 @@ export class BuildingComponent implements OnInit {
       noOfFloors: ['', Validators.required]
     });
   }
-  saveLogin() {
+
+
+
+  saveBuilding() {
     this.submitted = true;
     console.log(this.building);
     console.log("inside save method")
@@ -37,22 +40,14 @@ export class BuildingComponent implements OnInit {
       if (this.selectedstatus) {
         this.statusError = false
       }
-      console.log(" formmm")
-      this.repo.addBuilding(this.building);
-      console.log("valid form")
+
     }
     else {
       console.log("invalid form");
-      // if (!this.selectedstatus) {
       this.statusError = true;
-      // }
     }
-    console.log(this.building.building_name);
-    const formData = new FormData();
-    console.log(this.building.status);
-    console.log(this.building.no_of_floors);
-    console.log(this.building.location);
 
+    const formData = new FormData();
     if (this.building.building_name && this.building.no_of_floors && this.building.location && this.building.status) {
       formData.append('building_name', this.building.building_name);
       formData.append('location', this.building.location);
@@ -62,25 +57,22 @@ export class BuildingComponent implements OnInit {
 
     if (this.selectedFile) {
       formData.append('images', this.selectedFile);
-      this.repo.addBuilding(formData)
 
-      console.log('FormData:', formData);
-      // this.http.post<Building>('http://127.0.0.1:8000/building/addingbuilding/', formData).subscribe((response) => {
-      //  console.log('image added');
-      //  console.log(response)
-      // });
+      
+      this.repo.addBuilding(formData)
     }
   }
 
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+
     const file = event.target.files[0];
+
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.imageUrl = e.target.result;
     };
-
     reader.readAsDataURL(file);
   }
 

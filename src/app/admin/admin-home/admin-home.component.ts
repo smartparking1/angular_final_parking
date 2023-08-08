@@ -41,10 +41,6 @@ updatebuilding(id: any,status:any) {
           this.building.status=status
         }
     })
-
-    console.log(this.building.building_id);
-    console.log(this.building.image_url);
-
     const formData = new FormData();
 
     if ( this.building.building_name && this.building.no_of_floors && this.building.location && this.building.status) {
@@ -56,20 +52,20 @@ updatebuilding(id: any,status:any) {
     }
 
     // Fetch the file data from the URL
-    this.http.get(this.building.image_url, { responseType: 'blob' }).subscribe((blob) => {
+    this.http.get(this.building.image, { responseType: 'blob' }).subscribe((blob) => {
       const file = new File([blob], 'img.jpg');
-      console.log(blob)
-      console.log(file)
 
-      formData.append('images', file);
+
+      // formData.append('images', file);
       console.log(formData)
-      // Send the request with the updated form data
-      // console.log(building);
       return this.http.put<Building>(`http://127.0.0.1:8000/building/UpdateBuildingAndDeleteBuildingGettingParticularBuilding/${id}/`, formData).subscribe(d=>console.log(d));
     });
     console.log(this.building)
     //this.repo.updatebuilding(this.building)
 
+}
+getImageSource(imageData: string): string {
+  return 'data:image/jpeg;base64,' + imageData;
 }
 
 }

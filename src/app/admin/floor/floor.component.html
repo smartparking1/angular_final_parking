@@ -4,7 +4,8 @@
       <div class="form">
         <h1 style="text-align: center;color:'#d73925'">Add Floor</h1>
 
-      <b><label>Selecet a building</label></b>
+      <b>
+        <label>Selecet a building</label></b>
               <select class="form-control" id="selectedBuilding"  [(ngModel)]="selectedbuilding" name="building" (ngModelChange)="onbuildingselction()" placeholder="Select a building">
                 <option *ngFor="let name of uniqueBuildings" [value]=" name ">{{ name }}</option>
               </select>

@@ -35,10 +35,14 @@ export class RestDataService {
   //* for admin  section oparations
 
   addBuilding(building:any):Observable<Building>{
-    return this.http.post<Building>("http://127.0.0.1:8000/building/addingbuilding/",building)
+    console.log("u=======================")
+    console.log(building['images']);
+    console.log(building.get('images'));
+
+    return this.http.post('http://127.0.0.1:8000/building/addbuilding/', building)
   }
 
-  UserRegister(user: User ): Observable<any> {
+  UserRegister(user: any ): Observable<any> {
 
     return this.http.post<any>("http://127.0.0.1:8000/Employee/EmployeeRegister/", user);
   }

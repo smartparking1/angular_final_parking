@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
 selectedrole?:string;
 emailError: boolean = false;
 cpassword?:string;
-
-
+selectedFile: File | undefined;
+imageUrl: string = ''
 
   ngOnInit(): void {
     this.newUser.location="";
@@ -46,15 +46,20 @@ cpassword?:string;
     console.log("entered into register");
     if (this.isValidForm()) {
       this.newUser.role='employee'
-
-          this.repo.userRegister(this.newUser)
+      var formData = new FormData();
+      if(this.newUser.employee_name!=undefined &&this.newUser.email_id!=undefined && this.newUser.password &&this.newUser.location  &&this.selectedFile &&this.newUser.mobile_number){
+        formData.append('employee_name',this.newUser.employee_name)
+        formData.append('role',this.newUser.role)
+        formData.append('email_id',this.newUser.email_id)
+        formData.append('password',this.newUser.password)
+        formData.append('location',this.newUser.location)
+        formData.append('mobile_number',this.newUser.mobile_number+"")
+        formData.append('image',this.selectedFile)
+      }
+          this.repo.userRegister(formData)
            this.router.navigateByUrl('/login')
             console.log("register successfully ")
         }
-
-
-
-
 
     else {
         console.log("invalid form");
@@ -69,5 +74,25 @@ cpassword?:string;
       }
   // }
 }
+}
+
+onFileSelected(event: any) {
+  this.selectedFile = event.target.files[0];
+  if(this.selectedFile!=undefined){
+
+  }
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = (e: any) => {
+    this.imageUrl = e.target.result;
+  };
+  reader.readAsDataURL(file);
+
+  // for (var key in this.newUser) {
+  //   if (this.newUser.hasOwnProperty(key)) {
+  //     formData.append(key,this.newUser[key])
+
+  //       }
+  // }
 }
 }

@@ -112,7 +112,7 @@ export class RepositryService implements OnInit {
   }
 
 
-  userRegister(user: User) {
+  userRegister(user: any) {
     this.restdata.UserRegister(user).subscribe(
       (responce) => {
         this.isRegister = true
@@ -136,6 +136,7 @@ export class RepositryService implements OnInit {
   //* for adding building
 
   addBuilding(buildng: any) {
+    console.log(buildng,'----------------------------')
     this.restdata.addBuilding(buildng).subscribe(
       (respone) => {
         console.log(respone)
@@ -169,7 +170,7 @@ export class RepositryService implements OnInit {
 chekingAdminLoginStatus() {
     const rolecheking = localStorage.getItem('user')
     if (rolecheking != null) {
-      const role = JSON.parse(rolecheking).role
+      const role =JSON.parse(rolecheking).role
       if (role == 'admin') {
         return true
       }

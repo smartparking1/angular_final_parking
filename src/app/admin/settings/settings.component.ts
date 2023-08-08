@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { error } from 'console';
 import { RepositryService } from 'src/app/model/repositry.service';
@@ -12,8 +13,8 @@ import { User } from 'src/app/model/user.model';
 export class SettingsComponent {
 
   public emplpoyeeList!:User[]
-
-  constructor(private restService :RestDataService,private repo:RepositryService) {
+  imageUrl?:string
+  constructor(private restService :RestDataService,private repo:RepositryService,private http:HttpClient) {
 
     this.restService.gettingallEmployees().subscribe(
       (responce)=>{
@@ -41,6 +42,17 @@ export class SettingsComponent {
   deleteEmployee(email:any){
     this.repo.deleteEmployee(email)
 
+  }
+
+  getImage(imageId = 9): void {
+    this.http.get(`http://127.0.0.1:8000/building/getimg/${imageId}`, { responseType: 'blob' })
+      .subscribe((response: any) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imageUrl = reader.result as string;
+        };
+        reader.readAsDataURL(response);
+      });
   }
 }
 
